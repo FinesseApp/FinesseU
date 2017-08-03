@@ -9,23 +9,21 @@ import android.widget.GridLayout;
 
 
 public class ClassesActivity extends AppCompatActivity{
-    private GridLayout mGrid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_classes);
 
-        mGrid = (GridLayout) findViewById(R.id.grid);
+        GridLayout mGrid = (GridLayout) findViewById(R.id.grid);
         int count = mGrid.getChildCount();
         for(int i = 0; i < count; i++) {
-            final int final_i = i;
             final Button mClassesButton;
-            mClassesButton = (Button) mGrid.getChildAt(final_i);
+            mClassesButton = (Button) mGrid.getChildAt(i);
             mClassesButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(ClassesActivity.this, ResourcesActivity.class);
+                    Intent intent = new Intent(ClassesActivity.this, CoursesActivity.class);
                     startActivity(intent);
                 }
             });
