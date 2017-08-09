@@ -25,8 +25,7 @@ public class CoursesActivity  extends AppCompatActivity {
     private ListView mListView;
     private SearchView searchView;
     private List<String> mCoursesCodes = new ArrayList<>();
-    private List<String> mCoursesII = new ArrayList<>();
-    private String[] mCourses = {"CSCI 101", "CSCI 241"};
+    private List<String> mCourses = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +52,12 @@ public class CoursesActivity  extends AppCompatActivity {
         }
         catch(IOException e){}
 
-        try {//takes one of he course codes from the list using the index passed by ClassesActivity to load class names into the mCoursesII list
+        try {//takes one of he course codes from the list using the index passed by SubjectsActivity to load class names into the mCoursesII list
             InputStream is = getAssets().open("AllClasses/" + mCoursesCodes.get(index));
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             String line = reader.readLine();
             while (line != null) {
-                mCoursesII.add(line);
+                mCourses.add(line);
                 line = reader.readLine();
             }
             is.close();
@@ -66,7 +65,7 @@ public class CoursesActivity  extends AppCompatActivity {
         catch(IOException e){}
 
         mListView = (ListView) findViewById(R.id.list);
-        ListAdapter course_list = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mCoursesII);//places the content from the mCoursesII list into the listviews adapter
+        ListAdapter course_list = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mCourses);//places the content from the mCoursesII list into the listviews adapter
         mListView.setAdapter(course_list);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {//when an item is clicked, redirect to the resources activity

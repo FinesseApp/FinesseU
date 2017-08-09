@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mloginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(MainActivity.this, ClassesActivity.class);
+                Intent intent = new Intent(MainActivity.this, SubjectsActivity.class);
                 startActivity(intent);
             }
         });

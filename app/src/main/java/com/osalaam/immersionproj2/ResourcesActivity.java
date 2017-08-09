@@ -30,7 +30,7 @@ public class ResourcesActivity extends AppCompatActivity {
         mClassesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ResourcesActivity.this, ClassesActivity.class);
+                Intent intent = new Intent(ResourcesActivity.this, SubjectsActivity.class);
                 startActivity(intent);
             }
         });*/

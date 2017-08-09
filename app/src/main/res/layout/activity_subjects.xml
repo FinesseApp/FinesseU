@@ -5,7 +5,7 @@ android:orientation="vertical" android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:gravity="center"
 android:background="@drawable/bg_gradient"
-tools:context="com.osalaam.immersionproj2.ClassesActivity">
+tools:context="com.osalaam.immersionproj2.SubjectsActivity">
 
 <TextView
     android:layout_width="wrap_content"

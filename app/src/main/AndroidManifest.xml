@@ -28,7 +28,7 @@
                 android:resource="@xml/searchable"/>
         </activity>
 
-        <activity android:name=".ClassesActivity">
+        <activity android:name=".SubjectsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>

@@ -19,14 +19,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClassesActivity extends AppCompatActivity{
+public class SubjectsActivity extends AppCompatActivity{
     private ListView mListView;
     private List<String> mSubjects = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_classes);
+        setContentView(R.layout.activity_subjects);
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) findViewById(R.id.search);
@@ -47,13 +47,13 @@ public class ClassesActivity extends AppCompatActivity{
         catch(IOException e){}
 
         mListView = (ListView) findViewById(R.id.listv);
-        ListAdapter course_list = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mSubjects);
-        mListView.setAdapter(course_list);
+        ListAdapter subject_list = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mSubjects);
+        mListView.setAdapter(subject_list);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(ClassesActivity.this, CoursesActivity.class);
+                Intent intent = new Intent(SubjectsActivity.this, CoursesActivity.class);
                 intent.putExtra("index", i);
                 startActivity(intent);
             }
