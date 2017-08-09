@@ -11,10 +11,10 @@ import java.util.*;
 @IgnoreExtraProperties
 public class Homework {
 
-    public String title;
-    public String classTitle;
-    public String author;
-    public String urlLink;
+    private String title;
+    private String classTitle;
+    private String author;
+    private String urlLink;
 
     public Homework() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
@@ -37,6 +37,21 @@ public class Homework {
         result.put("title", title);
         result.put("urlLink", urlLink);
         return result;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+
+    public String getClassTitle() {
+        return classTitle;
+    }
+
+    public String getTitle() {return title; }
+
+    public String getURL() {
+        return urlLink;
     }
 
 }

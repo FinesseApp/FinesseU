@@ -25,6 +25,7 @@ public class ResourcesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(ResourcesActivity.this, UploadableActivity.class);
+                intent.putExtra("class_title", className);
                 startActivity(intent);
             }
         });

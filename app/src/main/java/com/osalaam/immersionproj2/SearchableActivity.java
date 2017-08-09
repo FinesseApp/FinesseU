@@ -2,9 +2,13 @@ package com.osalaam.immersionproj2;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
+
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -93,15 +97,16 @@ public class SearchableActivity extends AppCompatActivity {
         textBookRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                GenericTypeIndicator<ArrayList<TextBook>> textbooklist = new GenericTypeIndicator<ArrayList<TextBook>>() {};
+                for (DataSnapshot child: dataSnapshot.getChildren()) {
+                    mBooks.add(child.getValue(TextBook.class));
+                }
 
-                mBooks = dataSnapshot.getValue(textbooklist);
                 ArrayList<TextBook> result = searchTextbooks(mBooks, query.toLowerCase());
 
                 results = "Text Book Results\n";
                 for (int i = 0; i < result.size(); i++)
                 {
-                    results += "Title: " + result.get(i).title  + "\t" + "Author: " + result.get(i).author + "\t" +  "URL: " + result.get(i).urlLink + "\n";
+                    results += "Title: " + result.get(i).getTitle() + "\t" + "Author: " + result.get(i).getAuthor() + "\t" + "Class: " + result.get(i).getClassTitle() + "\t" + "URL: " + result.get(i).getURL() + "\n";
                     results += "\n";
                 }
                 mTextBookTree.setText(results);
@@ -117,19 +122,22 @@ public class SearchableActivity extends AppCompatActivity {
         // add a ValueEventListener on that path of the database, to update HomeworkView.
         homeworkRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // mHomeworkTree.setText(dataSnapshot.toString());
-                GenericTypeIndicator<ArrayList<Homework>> homeworklist = new GenericTypeIndicator<ArrayList<Homework>>() {};
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
 
-                mHomework = dataSnapshot.getValue(homeworklist);
+                for (DataSnapshot child: dataSnapshot.getChildren()) {
+                    mHomework.add(child.getValue(Homework.class));
+                }
 
                 results = "Homework Results\n";
                 ArrayList<Homework> result = searchHomework(mHomework, query.toLowerCase());
                 for (int i = 0; i < result.size(); i++)
                 {
-                    results += "Title: " + result.get(i).title  + "\t" + "Author: " + result.get(i).author + "\t" + "Class: " + result.get(i).classTitle  + "\t" + "URL: " + result.get(i).urlLink + "\n";
+                    //create URL, malformed URL exception
+                    results += "Title: " + result.get(i).getTitle() + "\t" + "Author: " + result.get(i).getAuthor() + "\t" + "Class: " + result.get(i).getClassTitle() + "\t" + "URL: " + result.get(i).getURL() + "\n";
                     results += "\n";
                 }
+
                 mHomeworkTree.setText(results);
             }
 
@@ -146,22 +154,22 @@ public class SearchableActivity extends AppCompatActivity {
         ArrayList<Homework> result = new ArrayList<Homework>();
         for (int i = 0; i < homeworkList.size(); i++)
         {
-            if (homeworkList.get(i).author.toLowerCase().contains((String) query))
+            if (homeworkList.get(i).getAuthor().toLowerCase().contains((String) query))
             {
                 result.add(homeworkList.get(i));
             }
-            else if (homeworkList.get(i).classTitle.toLowerCase().contains((String) query))
+            else if (homeworkList.get(i).getClassTitle().toLowerCase().contains((String) query))
             {
                 result.add(homeworkList.get(i));
             }
-            else if (homeworkList.get(i).title.toLowerCase().contains((String) query))
+            else if (homeworkList.get(i).getTitle().toLowerCase().contains((String) query))
             {
                 result.add(homeworkList.get(i));
             }
-            else if (homeworkList.get(i).urlLink.toLowerCase().contains((String) query))
-            {
-                result.add(homeworkList.get(i));
-            }
+            //      else if (homeworkList.get(i).getURL().toLowerCase().contains((String) query))
+            //      {
+            //         result.add(homeworkList.get(i));
+            //     }
         }
         return result;
     }
@@ -172,15 +180,19 @@ public class SearchableActivity extends AppCompatActivity {
         ArrayList<TextBook> result = new ArrayList<TextBook>();
         for (int i = 0; i < textbookList.size(); i++)
         {
-            if (textbookList.get(i).author.toLowerCase().contains((String) query))
+            if (textbookList.get(i).getAuthor().toLowerCase().contains((String) query))
             {
                 result.add(textbookList.get(i));
             }
-            else if (textbookList.get(i).title.toLowerCase().contains((String) query))
+            else if (textbookList.get(i).getTitle().toLowerCase().contains((String) query))
             {
                 result.add(textbookList.get(i));
             }
-            else if (textbookList.get(i).urlLink.toLowerCase().contains((String) query))
+            //  else if (textbookList.get(i).getURL().toLowerCase().contains((String) query))
+            // {
+            //     result.add(textbookList.get(i));
+            //}
+            else if (textbookList.get(i).getClassTitle().toLowerCase().contains((String) query))
             {
                 result.add(textbookList.get(i));
             }
