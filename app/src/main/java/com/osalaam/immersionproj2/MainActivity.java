@@ -1,6 +1,7 @@
 package com.osalaam.immersionproj2;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -41,20 +42,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mpassword = (EditText) findViewById(R.id.editText3);
 
 
-        mloginButton.setOnClickListener(this);
+        //mloginButton.setOnClickListener(this);
         mSignupButton.setOnClickListener(this);
+
+        mloginButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(MainActivity.this, ClassesActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
-
-
-//        mClassesButton.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view){
-//                Intent intent = new Intent(MainActivity.this, ClassesActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//    }
     private void signupUser() {
         String email = memail.getText().toString().trim();
         String password =mpassword.getText().toString().trim();
