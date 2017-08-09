@@ -1,7 +1,5 @@
 package com.osalaam.immersionproj2;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,6 +25,7 @@ public class CoursesActivity  extends AppCompatActivity {
     private SearchView searchView;
     private List<String> mCoursesCodes = new ArrayList<>();
     private List<String> mCourses = new ArrayList<>();
+    private SearchView mSearching;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,5 +81,27 @@ public class CoursesActivity  extends AppCompatActivity {
             String query = intent.getStringExtra(SearchManager.QUERY);
             Log.i("OOS", query);
         }
+
+        SearchView mSearching = (SearchView) findViewById(R.id.search2);
+
+        final SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener()
+        {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.i("TAG", query);
+                Intent intent = new Intent(getApplicationContext(), SearchableActivity.class);
+                intent.putExtra("query", query);
+                startActivity(intent);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                return true;
+
+            }
+        };
+       mSearching.setOnQueryTextListener(queryTextListener);
     }
 }

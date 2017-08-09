@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(MainActivity.this,"Registration complete",Toast.LENGTH_SHORT).show();
+
                         } else{
                             Toast.makeText(MainActivity.this,"Registration Failed,Please try again",Toast.LENGTH_SHORT).show();
                         }

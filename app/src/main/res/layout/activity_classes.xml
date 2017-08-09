@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:orientation="vertical" android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:gravity="center"
+android:background="@drawable/bg_gradient"
+tools:context="com.osalaam.immersionproj2.ClassesActivity">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Finesse!"
+    android:textSize="70dp"
+    android:textColor="#FFFFFF"
+    android:layout_margin="50dp" />
+
+    <android.support.v7.widget.SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:shape="@drawable/box_shape"
+        android:elevation="4dp"
+        android:background="#FFFFFF">
+    </android.support.v7.widget.SearchView>
+
+<GridLayout
+    android:id="@+id/grid"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:columnCount="2">
+    <Button
+        android:text="Mathematics"
+        android:backgroundTint="#add8e6"
+        android:textColor="#FFFFFF"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+    <Button
+        android:text="History"
+        android:backgroundTint="#add8e6"
+        android:textColor="#FFFFFF"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+    <Button
+        android:text="Science"
+        android:backgroundTint="#add8e6"
+        android:textColor="#FFFFFF"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+    <Button
+        android:text="Art"
+        android:backgroundTint="#add8e6"
+        android:textColor="#FFFFFF"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+    <Button
+        android:text="English"
+        android:backgroundTint="#add8e6"
+        android:textColor="#FFFFFF"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+    <Button
+        android:text="Languages"
+        android:backgroundTint="#add8e6"
+        android:textColor="#FFFFFF"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_rowWeight="1"/>
+
+</GridLayout>
+
+</LinearLayout>

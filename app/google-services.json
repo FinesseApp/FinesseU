@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "366321466111",
-    "firebase_url": "https://finesseuser.firebaseio.com",
-    "project_id": "finesseuser",
-    "storage_bucket": "finesseuser.appspot.com"
+    "project_number": "218204947232",
+    "firebase_url": "https://finesse-e9796.firebaseio.com",
+    "project_id": "finesse-e9796",
+    "storage_bucket": "finesse-e9796.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:366321466111:android:4b8aa935d676ee79",
+        "mobilesdk_app_id": "1:218204947232:android:cb924e1bc9d52e57",
         "android_client_info": {
-          "package_name": "com.osalaam.immersionproj2"
+          "package_name": "com.example.elijahc.finesse"
         }
       },
       "oauth_client": [
         {
-          "client_id": "366321466111-v8m62m6uh7443igmvum981n27va8agpc.apps.googleusercontent.com",
+          "client_id": "218204947232-fbb8509o929g69srd8s4ot4bghu4di0v.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.osalaam.immersionproj2",
-            "certificate_hash": "08f18d2ebb39fded4596492f29b11f7a2ccdd479"
+            "package_name": "com.example.elijahc.finesse",
+            "certificate_hash": "38355ce4a733175cb9f92c1ee746c3a2eaa33441"
           }
         },
         {
-          "client_id": "366321466111-2im1dsugvunird0hv7djdmfaeemhbhkh.apps.googleusercontent.com",
+          "client_id": "218204947232-jligf42tobs982oqnf55btk77krenelm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBXlQgykb6no9eOy_cpgpbfknu4IwH2tM0"
+          "current_key": "AIzaSyA1sGAMRaVMA-0cPvXu6y93c5QnTydPR-A"
         }
       ],
       "services": {
@@ -40,7 +40,51 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "366321466111-2im1dsugvunird0hv7djdmfaeemhbhkh.apps.googleusercontent.com",
+              "client_id": "218204947232-jligf42tobs982oqnf55btk77krenelm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218204947232:android:4b8aa935d676ee79",
+        "android_client_info": {
+          "package_name": "com.osalaam.immersionproj2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "218204947232-s2qgd3vaqn3lqg79aufprm4es7mmv67e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.osalaam.immersionproj2",
+            "certificate_hash": "38355ce4a733175cb9f92c1ee746c3a2eaa33441"
+          }
+        },
+        {
+          "client_id": "218204947232-jligf42tobs982oqnf55btk77krenelm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1sGAMRaVMA-0cPvXu6y93c5QnTydPR-A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "218204947232-jligf42tobs982oqnf55btk77krenelm.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
