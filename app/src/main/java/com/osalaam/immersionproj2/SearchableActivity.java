@@ -2,19 +2,15 @@ package com.osalaam.immersionproj2;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.widget.TextView;
 
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -27,8 +23,10 @@ public class SearchableActivity extends AppCompatActivity {
     // Get references to text views to display database data.
     private TextView mHomeworkTree;
     private TextView mTextBookTree;
-    private ArrayList<TextBook> mBooks = new ArrayList<TextBook>();
-    private ArrayList<Homework> mHomework = new ArrayList<Homework>();
+    private ArrayList<ResourceObj> mResourceObjBooks = new ArrayList<ResourceObj>();
+    private ArrayList<ResourceObj> mResourceObjExams = new ArrayList<ResourceObj>();
+    private ArrayList<ResourceObj> mResourceObjHW = new ArrayList<ResourceObj>();
+
     private String results;
     StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -48,6 +46,7 @@ public class SearchableActivity extends AppCompatActivity {
 
         final TextView mHomeworkTree = (TextView) findViewById(R.id.homework_view);
         final TextView mTextBookTree = (TextView) findViewById(R.id.text_book_view);
+        final TextView mExamsTree = (TextView) findViewById(R.id.exams_view);
 
 
 
@@ -81,35 +80,55 @@ public class SearchableActivity extends AppCompatActivity {
 
         //Specific Path Reference:
         DatabaseReference textBookRef = databaseReference.child("Text Book");
-        DatabaseReference homeworkRef = databaseReference.child("Homework");
-
-
-        StorageReference HWRef = storageReference.child("homework");
-        StorageReference imageRef = storageReference.child("images");
-
-
-        imageRef.child("images/*");
+        final DatabaseReference homeworkRef = databaseReference.child("Homework");
+        DatabaseReference examsRef = databaseReference.child("Exams");
 
 
 
-        //storage refence
+
         // add a ValueEventListener on that path of the storage to update TextbookView.
         textBookRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot child: dataSnapshot.getChildren()) {
-                    mBooks.add(child.getValue(TextBook.class));
+                    mResourceObjBooks.add(child.getValue(ResourceObj.class));
                 }
 
-                ArrayList<TextBook> result = searchTextbooks(mBooks, query.toLowerCase());
+                ArrayList<ResourceObj> result = searchResources(mResourceObjBooks, query.toLowerCase());
 
                 results = "Text Book Results\n";
                 for (int i = 0; i < result.size(); i++)
                 {
-                    results += "Title: " + result.get(i).getTitle() + "\t" + "Author: " + result.get(i).getAuthor() + "\t" + "Class: " + result.get(i).getClassTitle() + "\t" + "URL: " + result.get(i).getURL() + "\n";
+                    results += "Title: " + result.get(i).getTitle() + "\t" + "Author: " + result.get(i).getAuthor() + "\t" + "Class: " + result.get(i).getClassTitle() + "\t" + " URL: " + result.get(i).getURL();
                     results += "\n";
                 }
                 mTextBookTree.setText(results);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                mTextBookTree.setText(databaseError.toString());
+            }
+        });
+
+        // add a ValueEventListener on that path of the storage to update TextbookView.
+        examsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot child: dataSnapshot.getChildren()) {
+                    mResourceObjExams.add(child.getValue(ResourceObj.class));
+                }
+
+                ArrayList<ResourceObj> result = searchResources(mResourceObjExams, query.toLowerCase());
+
+                results = "Exam Results\n";
+                for (int i = 0; i < result.size(); i++)
+                {
+                    results += "Title: " + result.get(i).getTitle() + "\t" + "Author: " + result.get(i).getAuthor() + "\t" + "Class: " + result.get(i).getClassTitle() + "\t" + " URL: " + result.get(i).getURL();
+                    results += "\n";
+                }
+                mExamsTree.setText(results);
 
             }
 
@@ -125,20 +144,27 @@ public class SearchableActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot)
             {
 
-                for (DataSnapshot child: dataSnapshot.getChildren()) {
-                    mHomework.add(child.getValue(Homework.class));
+                String test = "";
+                int counter = 0;
+                for (DataSnapshot child: dataSnapshot.getChildren())
+                {
+                    mResourceObjHW.add(child.getValue(ResourceObj.class));
+                    test = child.child("urlLink").getValue().toString();
+                    mResourceObjHW.get(counter).setURL(test);
+                  //System.out.println("--------------------" + mResourceObjHW.get(0).getURL());
+
                 }
+
+                ArrayList<ResourceObj> result = searchResources(mResourceObjHW, query.toLowerCase());
 
                 results = "Homework Results\n";
-                ArrayList<Homework> result = searchHomework(mHomework, query.toLowerCase());
                 for (int i = 0; i < result.size(); i++)
                 {
-                    //create URL, malformed URL exception
-                    results += "Title: " + result.get(i).getTitle() + "\t" + "Author: " + result.get(i).getAuthor() + "\t" + "Class: " + result.get(i).getClassTitle() + "\t" + "URL: " + result.get(i).getURL() + "\n";
+                    results += "Title: " + result.get(i).getTitle() + "\t" + "Author: " + result.get(i).getAuthor() + "\t" + "Class: " + result.get(i).getClassTitle() + "\t" + " URL: " + result.get(i).getURL() + " TEST:" + test;
                     results += "\n";
                 }
-
                 mHomeworkTree.setText(results);
+
             }
 
             @Override
@@ -149,53 +175,27 @@ public class SearchableActivity extends AppCompatActivity {
         });
     }
 
-    protected ArrayList<Homework> searchHomework(ArrayList<Homework> homeworkList, String query)
+    protected ArrayList<ResourceObj> searchResources(ArrayList<ResourceObj> resourceList, String query)
     {
-        ArrayList<Homework> result = new ArrayList<Homework>();
-        for (int i = 0; i < homeworkList.size(); i++)
+        ArrayList<ResourceObj> result = new ArrayList<ResourceObj>();
+        for (int i = 0; i < resourceList.size(); i++)
         {
-            if (homeworkList.get(i).getAuthor().toLowerCase().contains((String) query))
+            if (resourceList.get(i).getAuthor().toLowerCase().contains((String) query))
             {
-                result.add(homeworkList.get(i));
+                result.add(resourceList.get(i));
             }
-            else if (homeworkList.get(i).getClassTitle().toLowerCase().contains((String) query))
+            else if (resourceList.get(i).getClassTitle().toLowerCase().contains((String) query))
             {
-                result.add(homeworkList.get(i));
+                result.add(resourceList.get(i));
             }
-            else if (homeworkList.get(i).getTitle().toLowerCase().contains((String) query))
+            else if (resourceList.get(i).getTitle().toLowerCase().contains((String) query))
             {
-                result.add(homeworkList.get(i));
+                result.add(resourceList.get(i));
             }
             //      else if (homeworkList.get(i).getURL().toLowerCase().contains((String) query))
             //      {
             //         result.add(homeworkList.get(i));
             //     }
-        }
-        return result;
-    }
-
-
-    protected ArrayList<TextBook> searchTextbooks(ArrayList<TextBook> textbookList, String query)
-    {
-        ArrayList<TextBook> result = new ArrayList<TextBook>();
-        for (int i = 0; i < textbookList.size(); i++)
-        {
-            if (textbookList.get(i).getAuthor().toLowerCase().contains((String) query))
-            {
-                result.add(textbookList.get(i));
-            }
-            else if (textbookList.get(i).getTitle().toLowerCase().contains((String) query))
-            {
-                result.add(textbookList.get(i));
-            }
-            //  else if (textbookList.get(i).getURL().toLowerCase().contains((String) query))
-            // {
-            //     result.add(textbookList.get(i));
-            //}
-            else if (textbookList.get(i).getClassTitle().toLowerCase().contains((String) query))
-            {
-                result.add(textbookList.get(i));
-            }
         }
         return result;
     }

@@ -1,8 +1,5 @@
 package com.osalaam.immersionproj2;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -12,31 +9,35 @@ import java.util.*;
  */
 
 @IgnoreExtraProperties
-public class TextBook {
+public class ResourceObj {
 
     private String title;
+    private String classTitle;
     private String author;
     private String urlLink;
-    private String classTitle;
+    private String testing;
 
-    public TextBook() {
+    public ResourceObj() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
     }
 
-    public TextBook(String title, String author, String classTitle, String url) {
-        this.title = title;
+    public ResourceObj(String author, String classTitle, String title, String urlLink, String testing) {
         this.author = author;
-        this.urlLink = url;
         this.classTitle = classTitle;
+        this.title = title;
+        this.urlLink = urlLink;
+        this.testing = testing;
     }
 
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("title", title);
+
         result.put("author", author);
-        result.put("urlLink", urlLink);
         result.put("classTitle", classTitle);
+        result.put("title", title);
+        result.put("urlLink", urlLink);
+        result.put("testing", "testing");
         return result;
     }
 
@@ -49,10 +50,21 @@ public class TextBook {
         return classTitle;
     }
 
-    public String getTitle() {return title; }
+    public String getTitle() {
+        return title;
+    }
 
     public String getURL() {
         return urlLink;
+    }
+
+    public String getTest() {
+        return testing;
+    }
+
+    public void setURL(String url)
+    {
+        this.urlLink = url;
     }
 
 }
