@@ -26,14 +26,5 @@ public class ResourcesActivity extends AppCompatActivity {
         });
 
 
-
-        /*mClassesButton = (Button) findViewById(R.id.main);
-        mClassesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ResourcesActivity.this, SubjectsActivity.class);
-                startActivity(intent);
-            }
-        });*/
     }
 }

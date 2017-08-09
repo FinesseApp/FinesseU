@@ -26,7 +26,6 @@ public class CoursesActivity  extends AppCompatActivity {
     private SearchView searchView;
     private List<String> mCoursesCodes = new ArrayList<>();
     private List<String> mCourses = new ArrayList<>();
-    private SearchView mSearching;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +72,7 @@ public class CoursesActivity  extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(CoursesActivity.this, ResourcesActivity.class);
+                intent.putExtra("class_name", mCourses.get(i));
                 startActivity(intent);
             }
         });
