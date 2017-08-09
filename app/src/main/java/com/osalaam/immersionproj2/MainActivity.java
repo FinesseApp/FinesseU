@@ -36,13 +36,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         mloginButton = (Button) findViewById(R.id.loginbutton);
-        mSignupButton =(Button) findViewById(R.id.signupbutton);
-        memail =(EditText) findViewById(R.id.editText2) ;
+        mSignupButton = (Button) findViewById(R.id.signupbutton);
+        memail = (EditText) findViewById(R.id.editText2);
         mpassword = (EditText) findViewById(R.id.editText3);
 
 
         mloginButton.setOnClickListener(this);
         mSignupButton.setOnClickListener(this);
+    }
 
 
 
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                startActivity(intent);
 //            }
 //        });
-    }
+//    }
     private void signupUser() {
         String email = memail.getText().toString().trim();
         String password =mpassword.getText().toString().trim();
