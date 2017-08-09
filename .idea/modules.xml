@@ -3,10 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FinesseU.iml" filepath="$PROJECT_DIR$/FinesseU.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ImmersionProj2.iml" filepath="$PROJECT_DIR$/ImmersionProj2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ImmersionProject2-Finesse.iml" filepath="$PROJECT_DIR$/ImmersionProject2-Finesse.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ImmersionProject2-Finesse.iml" filepath="$PROJECT_DIR$/ImmersionProject2-Finesse.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
