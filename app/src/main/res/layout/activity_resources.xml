@@ -10,17 +10,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Classes Page!" />
+        android:text="Resources Page"
+        android:background="#FFFFFF"/>
 
-    <android.support.v7.widget.SearchView
-        android:id="@+id/search"
+    <Button
+        android:id="@+id/uploading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:shape="@drawable/box_shape"
+        android:text="UPLOAD"
         android:elevation="4dp"
         android:background="#FFFFFF">
-    </android.support.v7.widget.SearchView>
-
+    </Button>
 
 </LinearLayout>
