@@ -1,5 +1,7 @@
 package com.osalaam.immersionproj2;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -82,7 +83,7 @@ public class CoursesActivity  extends AppCompatActivity {
             Log.i("OOS", query);
         }
 
-        SearchView mSearching = (SearchView) findViewById(R.id.search2);
+        //mSearching = (SearchView) findViewById(R.id.search2);
 
         final SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener()
         {
@@ -102,6 +103,6 @@ public class CoursesActivity  extends AppCompatActivity {
 
             }
         };
-       mSearching.setOnQueryTextListener(queryTextListener);
+       searchView.setOnQueryTextListener(queryTextListener);
     }
 }

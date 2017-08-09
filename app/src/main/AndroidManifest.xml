@@ -16,28 +16,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".CoursesActivity" />
-        <activity android:name=".ClassesActivity" />
         <activity android:name=".ResourcesActivity" />
+
         <activity android:name=".SearchableActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+        </activity>
 
-<<<<<<< HEAD
         <activity android:name=".SubjectsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
             <meta-data android:name="android.app.searchable"
                 android:resource="@xml/searchable"/>
-=======
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
->>>>>>> b0cdeddb4c19ac0cbf54668c3b4fbdba4d95d56a
         </activity>
-        <activity android:name=".UploadableActivity"></activity>
+        <activity android:name=".UploadableActivity"/>
     </application>
 
 </manifest>

@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/ImmersionProj2.iml" filepath="$PROJECT_DIR$/ImmersionProj2.iml" />
       <module fileurl="file://$PROJECT_DIR$/ImmersionProject2-Finesse.iml" filepath="$PROJECT_DIR$/ImmersionProject2-Finesse.iml" />
       <module fileurl="file://$PROJECT_DIR$/ImmersionProject2-Finesse.iml" filepath="$PROJECT_DIR$/ImmersionProject2-Finesse.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-=======
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mergedinfesses.iml" filepath="$PROJECT_DIR$/mergedinfesses.iml" />
->>>>>>> b0cdeddb4c19ac0cbf54668c3b4fbdba4d95d56a
     </modules>
   </component>
 </project>
