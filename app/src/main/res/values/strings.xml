@@ -3,4 +3,9 @@
     <string name="class_button">GO TO CLASSES</string>
     <string name="search_hint">Search for a specific class</string>
     <string name="app_label">Finesse</string>
+
+    <string name="class_name">Class</string>
+    <string name="teacher">Teacher</string>
+    <string name="comment">Comment</string>
+    <string name="filepath">Local Filepath</string>
 </resources>
