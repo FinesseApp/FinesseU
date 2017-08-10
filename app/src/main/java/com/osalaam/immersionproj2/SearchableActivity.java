@@ -102,10 +102,10 @@ public class SearchableActivity extends AppCompatActivity {
 
                 ArrayList<ResourceObj> result = searchResources(mResourceObjBooks, query.toLowerCase());
 
-                results = "Text Book Results\n";
+                results = "Text Book Results\n\n";
                 for (int i = 0; i < result.size(); i++)
                 {
-                    results += "Title: " + result.get(i).getTitle() + "\t" + "Author: " + result.get(i).getAuthor() + "\t" + "Class: " + result.get(i).getClassTitle() + "\t" + " URL: " + result.get(i).getURL();
+                    results += " Title: " + result.get(i).getTitle() + "\t" + " Teacher: " + result.get(i).getAuthor() + "\t" + " Class: " + result.get(i).getClassTitle() + "\t" + " URL: " + result.get(i).getURL() +"\n";
                     results += "\n";
                 }
                 mTextBookTree.setText(results);
@@ -134,10 +134,10 @@ public class SearchableActivity extends AppCompatActivity {
 
                 ArrayList<ResourceObj> result = searchResources(mResourceObjExams, query.toLowerCase());
 
-                results = "Exam Results\n";
+                results = "Exam Results\n\n";
                 for (int i = 0; i < result.size(); i++)
                 {
-                    results += "Title: " + result.get(i).getTitle() + "\t" + "Author: " + result.get(i).getAuthor() + "\t" + "Class: " + result.get(i).getClassTitle() + "\t" + " URL: " + result.get(i).getURL();
+                    results += " Title: " + result.get(i).getTitle() + "\t" + " Teacher: " + result.get(i).getAuthor() + "\t" + " Class: " + result.get(i).getClassTitle() + "\t" + " URL: " + result.get(i).getURL() +"\n";
                     results += "\n";
                 }
                 mExamsTree.setText(results);
@@ -168,10 +168,10 @@ public class SearchableActivity extends AppCompatActivity {
 
                 ArrayList<ResourceObj> result = searchResources(mResourceObjHW, query.toLowerCase());
 
-                results = "Homework Results\n";
+                results = "Homework Results\n\n";
                 for (int i = 0; i < result.size(); i++)
                 {
-                    results += "Title: " + result.get(i).getTitle() + "\t" + "Author: " + result.get(i).getAuthor() + "\t" + "Class: " + result.get(i).getClassTitle() + "\t" + " URL: " + result.get(i).getURL();
+                    results += " Title: " + result.get(i).getTitle() + "\t" + " Teacher: " + result.get(i).getAuthor() + "\t" + " Class: " + result.get(i).getClassTitle() + "\t" + " URL: " + result.get(i).getURL() +"\n";
                     results += "\n";
                 }
                 mHomeworkTree.setText(results);

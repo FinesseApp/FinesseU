@@ -79,7 +79,7 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
 
     private void showFileChooser(){
         Intent intent = new Intent();
-        intent.setType("image/*");
+        intent.setType("application/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select an image"), PICK_IMAGE_REQUEST);
     }
