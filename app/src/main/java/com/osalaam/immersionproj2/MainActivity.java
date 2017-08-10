@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        //if it is not empty,progressdialog comes once they signup
+        //if it is not empty,progress dialog comes once they signup
 
         mProgressdialog.setMessage("Signing Up");
         mProgressdialog.show();

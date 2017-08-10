@@ -90,8 +90,14 @@ public class SearchableActivity extends AppCompatActivity {
         textBookRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot child: dataSnapshot.getChildren()) {
+                String test = "";
+                int counter = 0;
+                for (DataSnapshot child: dataSnapshot.getChildren())
+                {
                     mResourceObjBooks.add(child.getValue(ResourceObj.class));
+                    test = child.child("urlLink").getValue().toString();
+                    mResourceObjBooks.get(counter).setURL(test);
+                    counter++;
                 }
 
                 ArrayList<ResourceObj> result = searchResources(mResourceObjBooks, query.toLowerCase());
@@ -116,8 +122,14 @@ public class SearchableActivity extends AppCompatActivity {
         examsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot child: dataSnapshot.getChildren()) {
+                String test = "";
+                int counter = 0;
+                for (DataSnapshot child: dataSnapshot.getChildren())
+                {
                     mResourceObjExams.add(child.getValue(ResourceObj.class));
+                    test = child.child("urlLink").getValue().toString();
+                    mResourceObjExams.get(counter).setURL(test);
+                    counter++;
                 }
 
                 ArrayList<ResourceObj> result = searchResources(mResourceObjExams, query.toLowerCase());
@@ -151,8 +163,7 @@ public class SearchableActivity extends AppCompatActivity {
                     mResourceObjHW.add(child.getValue(ResourceObj.class));
                     test = child.child("urlLink").getValue().toString();
                     mResourceObjHW.get(counter).setURL(test);
-                  //System.out.println("--------------------" + mResourceObjHW.get(0).getURL());
-
+                    counter++;
                 }
 
                 ArrayList<ResourceObj> result = searchResources(mResourceObjHW, query.toLowerCase());
@@ -160,7 +171,7 @@ public class SearchableActivity extends AppCompatActivity {
                 results = "Homework Results\n";
                 for (int i = 0; i < result.size(); i++)
                 {
-                    results += "Title: " + result.get(i).getTitle() + "\t" + "Author: " + result.get(i).getAuthor() + "\t" + "Class: " + result.get(i).getClassTitle() + "\t" + " URL: " + result.get(i).getURL() + " TEST:" + test;
+                    results += "Title: " + result.get(i).getTitle() + "\t" + "Author: " + result.get(i).getAuthor() + "\t" + "Class: " + result.get(i).getClassTitle() + "\t" + " URL: " + result.get(i).getURL();
                     results += "\n";
                 }
                 mHomeworkTree.setText(results);
@@ -192,10 +203,6 @@ public class SearchableActivity extends AppCompatActivity {
             {
                 result.add(resourceList.get(i));
             }
-            //      else if (homeworkList.get(i).getURL().toLowerCase().contains((String) query))
-            //      {
-            //         result.add(homeworkList.get(i));
-            //     }
         }
         return result;
     }

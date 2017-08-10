@@ -15,18 +15,18 @@ public class ResourceObj {
     private String classTitle;
     private String author;
     private String urlLink;
-    private String testing;
+    private String userComment;
 
     public ResourceObj() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
     }
 
-    public ResourceObj(String author, String classTitle, String title, String urlLink, String testing) {
+    public ResourceObj(String author, String classTitle, String title, String urlLink, String comment) {
         this.author = author;
         this.classTitle = classTitle;
         this.title = title;
         this.urlLink = urlLink;
-        this.testing = testing;
+        this.userComment = comment;
     }
 
     @Exclude
@@ -37,7 +37,7 @@ public class ResourceObj {
         result.put("classTitle", classTitle);
         result.put("title", title);
         result.put("urlLink", urlLink);
-        result.put("testing", "testing");
+        result.put("userComment", userComment);
         return result;
     }
 
@@ -58,8 +58,8 @@ public class ResourceObj {
         return urlLink;
     }
 
-    public String getTest() {
-        return testing;
+    public String getComment() {
+        return userComment;
     }
 
     public void setURL(String url)
