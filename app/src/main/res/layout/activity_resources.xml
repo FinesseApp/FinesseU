@@ -23,79 +23,37 @@
         android:elevation="4dp"
         android:background="#FFFFFF">
     </Button>
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown" />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:text="@string/file_title"
-        android:textSize="25dp"
-        android:textColor="#FFFFFF"
-        />
-    <EditText
+    <Button
+        android:id="@+id/homeworksource"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="#FFFFFF"
-        android:id="@+id/getfiletitle"/>
+        android:text="HOMEWORK"
+        android:elevation="4dp"
+        android:background="#FFFFFF">
+    </Button>
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:text="@string/teacher"
-        android:textSize="25dp"
-        android:textColor="#FFFFFF"
-        />
-    <EditText
+    <Button
+        android:id="@+id/textbooksource"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="#FFFFFF"
-        android:id="@+id/getteacher"/>
+        android:text="TEXT BOOKS"
+        android:elevation="4dp"
+        android:background="#FFFFFF">
+    </Button>
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:text="@string/comment"
-        android:textSize="25dp"
-        android:textColor="#FFFFFF"
-        />
-    <EditText
+    <Button
+        android:id="@+id/examsource"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="#FFFFFF"
-        android:id="@+id/getcomment"/>
+        android:text="OLD EXAMS"
+        android:elevation="4dp"
+        android:background="#FFFFFF">
+    </Button>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:text="@string/filepath"
-        android:textSize="25dp"
-        android:textColor="#FFFFFF"
-        />
-    <EditText
-        android:id="@+id/local_file_path"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="#FFFFFF"/>
-    <ListView
-        android:id="@+id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+
 
 </LinearLayout>
