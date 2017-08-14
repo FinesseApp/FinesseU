@@ -3,17 +3,16 @@ package com.osalaam.immersionproj2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 
 public class ResourcesActivity extends AppCompatActivity {
 
     Button mUpload;
+    Button mHomework;
+    Button mTextBook;
+    Button mExams;
+
     String className = "";
     String fileTitle = "";
     String teacherName = "";
@@ -31,6 +30,10 @@ public class ResourcesActivity extends AppCompatActivity {
 
 
         mUpload = (Button) findViewById(R.id.uploading);
+        mHomework = (Button) findViewById(R.id.homeworksource);
+        mTextBook = (Button) findViewById(R.id.textbooksource);
+        mExams = (Button) findViewById(R.id.examsource);
+
         mUpload.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -47,6 +50,22 @@ public class ResourcesActivity extends AppCompatActivity {
             }
         });
 
+        View.OnClickListener results_listener = new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(ResourcesActivity.this, ResultsActivity.class);
+                intent.putExtra("class_title", className);
+                Button b = (Button) view;
+                intent.putExtra("resource_type", b.getText().toString());
+                startActivity(intent);
+            }
+        };
+
+        mHomework.setOnClickListener(results_listener);
+
+        mTextBook.setOnClickListener(results_listener);
+
+        mExams.setOnClickListener(results_listener);
 
     }
 }
