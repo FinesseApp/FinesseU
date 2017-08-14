@@ -51,36 +51,12 @@ public class SearchableActivity extends AppCompatActivity {
 
 
 
-       /* // add a ValueEventListener on the ROOT of the database, to update the rootTextView.
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mHomeworkTree.setText(dataSnapshot.toString());
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                mHomeworkTree.setText(databaseError.toString());
-            }
-        });
-
-        // add a ValueEventListener on the ROOT of the database, to update the rootTextView.
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mTextBookTree.setText(dataSnapshot.toString());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                mTextBookTree.setText(databaseError.toString());
-            }
-        });  */
 
 
         //Specific Path Reference:
         DatabaseReference textBookRef = databaseReference.child("Text Books");
-        final DatabaseReference homeworkRef = databaseReference.child("Homework");
+        DatabaseReference homeworkRef = databaseReference.child("Homework");
         DatabaseReference examsRef = databaseReference.child("Exams");
 
 
