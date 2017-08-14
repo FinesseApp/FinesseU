@@ -14,10 +14,6 @@ public class ResourcesActivity extends AppCompatActivity {
     Button mExams;
 
     String className = "";
-    String fileTitle = "";
-    String teacherName = "";
-    String fileComment = "";
-    String fileType = "";
 
     //The fuck move all of these to UploadAbleActivity...this should be able to display a list of resources
     @Override
@@ -41,10 +37,6 @@ public class ResourcesActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(ResourcesActivity.this, UploadableActivity.class);
                 intent.putExtra("class_title", className);
-            /*    intent.putExtra("file_title", fileTitle);
-                intent.putExtra("teacher_name", teacherName);
-                intent.putExtra("file_comment", fileComment);
-                intent.putExtra("file_type", fileType);*/
 
                 startActivity(intent);
             }

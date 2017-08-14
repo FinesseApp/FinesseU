@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="HOMEWORK"
+        android:text="Homework"
         android:elevation="4dp"
         android:background="#FFFFFF">
     </Button>
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="TEXT BOOKS"
+        android:text="Text Books"
         android:elevation="4dp"
         android:background="#FFFFFF">
     </Button>
@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="OLD EXAMS"
+        android:text="Exams"
         android:elevation="4dp"
         android:background="#FFFFFF">
     </Button>

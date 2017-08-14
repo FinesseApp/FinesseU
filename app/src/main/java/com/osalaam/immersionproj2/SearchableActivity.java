@@ -79,7 +79,7 @@ public class SearchableActivity extends AppCompatActivity {
 
 
         //Specific Path Reference:
-        DatabaseReference textBookRef = databaseReference.child("Text Book");
+        DatabaseReference textBookRef = databaseReference.child("Text Books");
         final DatabaseReference homeworkRef = databaseReference.child("Homework");
         DatabaseReference examsRef = databaseReference.child("Exams");
 

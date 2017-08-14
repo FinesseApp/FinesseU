@@ -11,8 +11,6 @@ import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -38,92 +36,60 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UploadableActivity extends AppCompatActivity implements View.OnClickListener
-{
+public class UploadableActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private static final int PICK_IMAGE_REQUEST = 234;
     private ImageView mimageView;
     private Button mbuttonChoose, mbuttonUpload;
+    private EditText mGetComment, mGetTeacher, mGetTitle;
 
-    // Button mUpload;
-    // String className = "";
-    String fileTitle = "";
-    String teacherName = "";
-    String fileComment = "";
-    String fileType = "";
-
-    private EditText mGetFileTitle = (EditText) findViewById(R.id.getfiletitle);
-
-    private EditText mGetTeacher = (EditText) findViewById(R.id.getteacher);
-
-    private EditText mGetComment = (EditText) findViewById(R.id.getcomment);
-
-    private String mType;
-
+    private String mType; // all intents from resource activity
     private String mClass; // will be intent from resources activity
 
-    /* private String mAuthor; // will be intent from resources activity
-     private String mTitle; // will be intent from resources activity
-     private String mComment; // will be intent from resources activity
- */
+    /*
+        private String mAuthor; // will be intent from resources activity
+        private String mTitle; // will be intent from resources activity
+        private String mComment; // will be intent from resources activity
+    */
     private Uri filePath;//the file path to the new storage object
 
     private StorageReference mStorageReference = FirebaseStorage.getInstance().getReference();
     private DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference();
 
 
-    private TextWatcher mTextWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-            // check Fields For Empty Values
-            checkFieldsForEmptyValues();
-        }
-    };
-
-    void checkFieldsForEmptyValues() {
-        Button uploadButton = (Button) findViewById(R.id.buttonUpload);
-
-        String s1 = mGetComment.getText().toString();
-        String s2 = mGetFileTitle.getText().toString();
-        String s3 = mGetTeacher.getText().toString();
-
-
-        if (s1.equals("") || s2.equals("") || s3.equals("")) {
-            uploadButton.setEnabled(false);
-        } else {
-            uploadButton.setEnabled(true);
-        }
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         mClass = getIntent().getStringExtra("class_title");//gets intents
-     /*   mComment = getIntent().getStringExtra("file_comment");
+      /* mComment = getIntent().getStringExtra("file_comment");
         mAuthor = getIntent().getStringExtra("teacher_name");
         mTitle = getIntent().getStringExtra("file_title");
-        mType = getIntent().getStringExtra("file_type");*/
+        mType = getIntent().getStringExtra("file_type");
+        */
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_uploadable);
 
 
-        fileTitle = mGetFileTitle.getText().toString(); //gets content of edit texts
-        teacherName = mGetTeacher.getText().toString();
-        fileComment = mGetComment.getText().toString();
 
+        //references to XML
+        mimageView = (ImageView) findViewById(R.id.imageView);
+        mbuttonChoose = (Button) findViewById(R.id.buttonChoose);
+        mbuttonUpload = (Button) findViewById(R.id.buttonUpload);
+
+        mGetTeacher = (EditText) findViewById(R.id.getteacher);
+        mGetComment = (EditText) findViewById(R.id.getcomment);
+        mGetTitle = (EditText) findViewById(R.id.getfiletitle);
+
+        //button click listneres
+        mbuttonChoose.setOnClickListener(this);
+        mbuttonUpload.setOnClickListener(this);
 
 //get the spinner from the xml.
-        final Spinner dropdown = (Spinner) findViewById(R.id.spinner1);
+        final Spinner dropdown = (Spinner)findViewById(R.id.spinner1);
 //create a list of items for the spinner.
-        String[] items = new String[]{"Homework", "Text Book", "Exams"};
+        String[] items = new String[]{"Homework", "Text Books", "Exams"};
 //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
 //set the spinners adapter to the previously created one.
@@ -131,7 +97,8 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
+                                       int position, long id)
+            {
                 mType = (String) parent.getItemAtPosition(position);
             }
 
@@ -141,29 +108,9 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
             }
         });
 
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_uploadable);
-
-
-        //references to XML
-        mimageView = (ImageView) findViewById(R.id.imageView);
-        mbuttonChoose = (Button) findViewById(R.id.buttonChoose);
-        mbuttonUpload = (Button) findViewById(R.id.buttonUpload);
-
-        //button click listneres
-        mbuttonChoose.setOnClickListener(this);
-        mbuttonUpload.setOnClickListener(this);
-
-        // set listeners
-        mGetTeacher.addTextChangedListener(mTextWatcher);
-        mGetFileTitle.addTextChangedListener(mTextWatcher);
-        mGetComment.addTextChangedListener(mTextWatcher);
-        // run once to disable if empty
-        checkFieldsForEmptyValues();
     }
 
-    private void showFileChooser() {
+    private void showFileChooser(){
         Intent intent = new Intent();
         intent.setType("application/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -171,16 +118,18 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
     }
 
 
-    private void uploadFile() {
+    private void uploadFile(){
 
-        if (filePath != null) {
+        if (filePath != null)
+        {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            final StorageReference relevantRef = mStorageReference.child(mType + "/" + filePath.getLastPathSegment().toString());
+            final StorageReference relevantRef = mStorageReference.child(mType +  "/" + filePath.getLastPathSegment().toString());
 
-            final DatabaseReference uploadedRef = mDatabaseReference.child(mType);
+            final DatabaseReference uploadedRef =  mDatabaseReference.child(mType);
+
 
 
             //pass in metadata alongside filepath
@@ -194,7 +143,7 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
                             /*assigning it to the new file*/
                             //  mDatabaseReference.push();
 
-                            ResourceObj newHW = new ResourceObj(teacherName, mClass, fileTitle, downloadUrl.toString(), fileComment);
+                            ResourceObj newHW = new ResourceObj(mGetTeacher.getText().toString(), mClass, mGetTitle.getText().toString(), downloadUrl.toString(), mGetComment.getText().toString());
                             DatabaseReference newFileRef = uploadedRef.push();//autogenerated unique key
                             newFileRef.setValue(newHW.toMap());//sets its as value of generated key
 
@@ -231,9 +180,9 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
             filePath = data.getData();
-            try {
+            try{
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 mimageView.setImageBitmap(bitmap);
             } catch (IOException e) {
@@ -246,16 +195,14 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view) {
 
-        if (view == mbuttonChoose) {
+        if (view == mbuttonChoose){
             // This opens the file chooser
             showFileChooser();
 
-        } else if (view == mbuttonUpload) {
-
+        } else if (view == mbuttonUpload){
             // This uploads the file
             uploadFile();
         }
     }
 }
-
 
