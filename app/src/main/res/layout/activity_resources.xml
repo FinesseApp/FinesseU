@@ -23,42 +23,28 @@
         android:elevation="4dp"
         android:background="#FFFFFF">
     </Button>
-
-
-    <LinearLayout
+    <Spinner
+        android:id="@+id/spinner1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
 
-        <Button
-            android:id="@+id/pdf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="pdf"/>
-        <Button
-            android:id="@+id/jpg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="jpg"/>
-
-
-    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:text="@string/class_name"
+        android:text="@string/file_title"
         android:textSize="25dp"
         android:textColor="#FFFFFF"
         />
     <EditText
-        android:id="@+id/class_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="#FFFFFF"/>
+        android:background="#FFFFFF"
+        android:id="@+id/getfiletitle"/>
 
 
     <TextView
@@ -70,11 +56,11 @@
         android:textColor="#FFFFFF"
         />
     <EditText
-        android:id="@+id/teacher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="#FFFFFF"/>
+        android:background="#FFFFFF"
+        android:id="@+id/getteacher"/>
 
 
     <TextView
@@ -86,12 +72,11 @@
         android:textColor="#FFFFFF"
         />
     <EditText
-        android:id="@+id/comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="#FFFFFF"/>
-
+        android:background="#FFFFFF"
+        android:id="@+id/getcomment"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -111,8 +96,6 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
-    </ListView>
-
+        />
 
 </LinearLayout>

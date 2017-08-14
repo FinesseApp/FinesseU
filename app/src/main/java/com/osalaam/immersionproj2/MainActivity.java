@@ -42,29 +42,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mpassword = (EditText) findViewById(R.id.editText3);
 
 
-        //mloginButton.setOnClickListener(this);
+        mloginButton.setOnClickListener(this);
         mSignupButton.setOnClickListener(this);
 
-        mloginButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(MainActivity.this, SubjectsActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     private void signupUser() {
         String email = memail.getText().toString().trim();
-        String password =mpassword.getText().toString().trim();
+        String password = mpassword.getText().toString().trim();
 
-        if(TextUtils.isEmpty(email)){
-            Toast.makeText(this,"Please, Enter your email",Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Please, Enter your email", Toast.LENGTH_SHORT).show();
 
             return;
         }
-        if(TextUtils.isEmpty(password)){
-            Toast.makeText(this,"Please,enter your password",Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Please,enter your password", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -73,21 +67,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mProgressdialog.setMessage("Signing Up");
         mProgressdialog.show();
 
-        firebaseauth.createUserWithEmailAndPassword(email,password)
+        firebaseauth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(MainActivity.this,"Registration complete",Toast.LENGTH_SHORT).show();
+                        if (task.isSuccessful()) {
+                            Toast.makeText(MainActivity.this, "Registration complete,please login now", Toast.LENGTH_LONG).show();
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), loginActivity.class));
 
-                        } else{
-                            Toast.makeText(MainActivity.this,"Registration Failed,Please try again",Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            Toast.makeText(MainActivity.this, "Authentication Failed,Please try again", Toast.LENGTH_SHORT).show();
                         }
-
+                        mProgressdialog.dismiss();
                     }
                 });
 
     }
+
+
+
     @Override
     public void onClick(View view) {
         if(view == mSignupButton){
@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(view == mloginButton){
             //login activity
+            startActivity(new Intent(this,loginActivity.class));
 
         }
     }

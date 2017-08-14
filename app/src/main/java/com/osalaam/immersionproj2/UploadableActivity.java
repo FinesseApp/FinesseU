@@ -39,18 +39,15 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
     private ImageView mimageView;
     private Button mbuttonChoose, mbuttonUpload;
 
-    private String mType = "Text Book";
+    private String mType; // all intents from resource activity
 
-    private String mClass;
+    private String mClass; // will be intent from resources activity
 
+    private String mAuthor; // will be intent from resources activity
+    private String mTitle; // will be intent from resources activity
+    private String mComment; // will be intent from resources activity
 
-    private String mAuthor = "NOOO";
-    private String mRating = "5";
-    private String mTitle = "www.google.com";
-    private String mURL = "www.google.com";
-
-    private Uri filePath;
-    // = Uri.fromFile(new File("path/to/doc/rivers.pdf"));
+    private Uri filePath;//the file path to the new storage object
 
     private StorageReference mStorageReference = FirebaseStorage.getInstance().getReference();
     private DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference();
@@ -59,13 +56,14 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        mClass = getIntent().getStringExtra("class_title");
+        mClass = getIntent().getStringExtra("class_title");//gets intents
+        mComment = getIntent().getStringExtra("file_comment");
+        mAuthor = getIntent().getStringExtra("teacher_name");
+        mTitle = getIntent().getStringExtra("file_title");
+        mType = getIntent().getStringExtra("file_type");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_uploadable);
 
-        //references to file locaitons in database
-        DatabaseReference textBookRef = mDatabaseReference.child("Text Book");
-        DatabaseReference homeworkRef =  mDatabaseReference.child("Homework");
 
 
         //references to XML
@@ -95,70 +93,27 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            StorageReference relevantRef = mStorageReference.child(mType +  "/" + filePath.getLastPathSegment().toString());
+            final StorageReference relevantRef = mStorageReference.child(mType +  "/" + filePath.getLastPathSegment().toString());
 
             final DatabaseReference uploadedRef =  mDatabaseReference.child(mType);
 
 
-                            /*creating metadata*/
-            StorageMetadata metadata = new StorageMetadata.Builder()
-                    .setContentType("application/*")
-                    .setCustomMetadata("teacher", mAuthor).setCustomMetadata("rating", mRating).setCustomMetadata("class", mClass).setCustomMetadata("type", mType )
-                    .build();
 
-
-           /* relevantRef.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
-                @Override
-                public void onSuccess(StorageMetadata storageMetadata) {
-                    // Metadata now contains the metadata for 'images/forest.jpg'
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    // Uh-oh, an error occurred!
-                }
-            });*/
-/*
-            relevantRef.updateMetadata(metadata)
-                    .addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
-                        @Override
-                        public void onSuccess(StorageMetadata storageMetadata) {
-                            // Updated metadata is in storageMetadata
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            // Uh-oh, an error occurred!
-                        }
-                    });
-*/
             //pass in metadata alongside filepath
             relevantRef.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            // Get a URL to the uploaded content
-                            // Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                            //Get a URL to the uploaded content
+                            Uri downloadUrl = taskSnapshot.getDownloadUrl();
 
                             /*assigning it to the new file*/
                             //  mDatabaseReference.push();
 
-                            if (mType.equals("Homework"))
-                            {
-                                Homework newHW = new Homework(mAuthor, mClass, mTitle, mURL);
+                                ResourceObj newHW = new ResourceObj(mAuthor, mClass, mTitle, downloadUrl.toString(), mComment);
                                 DatabaseReference newFileRef = uploadedRef.push();//autogenerated unique key
                                 newFileRef.setValue(newHW.toMap());//sets its as value of generated key
 
-                            }
-
-                            if (mType.equals("Text Book"))
-                            {
-                                TextBook newTB = new TextBook(mTitle, mAuthor, mClass, mURL);
-                                DatabaseReference newFileRef = uploadedRef.push();//autogenerated unique key
-                                newFileRef.setValue(newTB.toMap());//sets its as value of generated key
-
-                            }
 
                             progressDialog.dismiss();
 
@@ -239,3 +194,10 @@ We autogenerate a firebase download link for webbrowser, that vs displaying in a
 
 
 
+/*
+
+Get Teacher and Title as intents
+Grab Firebase storage url for a file and put as URL
+
+
+ */
