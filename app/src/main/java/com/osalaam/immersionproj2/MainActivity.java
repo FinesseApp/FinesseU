@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ProgressDialog mProgressdialog;
     private FirebaseAuth firebaseauth;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mloginButton.setOnClickListener(this);
         mSignupButton.setOnClickListener(this);
-
 
     }
 
@@ -86,8 +84,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
-
     @Override
     public void onClick(View view) {
         if(view == mSignupButton){
@@ -96,10 +92,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(view == mloginButton){
             //login activity
-            startActivity(new Intent(this,loginActivity.class));
+            //startActivity(new Intent(this,loginActivity.class));
+            startActivity(new Intent(this, SubjectsActivity.class));
 
         }
     }
-
-
 }

@@ -10,8 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListAdapter;
-import android.widget.ListView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import java.util.List;
 
 
 public class CoursesActivity  extends AppCompatActivity {
-    private ListView mListView;
+    private GridView mGridView;
     private SearchView searchView;
     private List<String> mCoursesCodes = new ArrayList<>();
     private List<String> mCourses = new ArrayList<>();
@@ -64,11 +64,11 @@ public class CoursesActivity  extends AppCompatActivity {
         }
         catch(IOException e){}
 
-        mListView = (ListView) findViewById(R.id.list);
-        ListAdapter course_list = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mCourses);//places the content from the mCoursesII list into the listviews adapter
-        mListView.setAdapter(course_list);
+        mGridView = (GridView) findViewById(R.id.list);
+        ListAdapter course_list = new ArrayAdapter<String>(this, R.layout.grid_item, mCourses);//places the content from the mCoursesII list into the listviews adapter
+        mGridView.setAdapter(course_list);
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {//when an item is clicked, redirect to the resources activity
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {//when an item is clicked, redirect to the resources activity
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(CoursesActivity.this, ResourcesActivity.class);

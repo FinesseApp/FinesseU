@@ -24,9 +24,13 @@
         android:elevation="4dp"
         android:background="#FFFFFF">
     </android.support.v7.widget.SearchView>
-    <ListView
+    <GridView
         android:id="@+id/list"
+        android:numColumns="2"
+        android:padding="10dp"
+        android:horizontalSpacing = "10dp"
+        android:verticalSpacing = "10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context="com.osalaam.immersionproj2.ResultsActivity"
+    android:contentDescription="ContentDescription"
+    android:id="@+id/grid_item"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:backgroundTint="#add8e6"
+    android:background="#FFFFFF"
+    android:textSize = "20dp"
+    android:gravity="center"
+    style="@style/button_style"
+    android:textColor="#FFFFFF"
+
+    android:shape="rectangle"
+    android:radius="50dp"
+    android:color="#0000ff"
+    android:height="30dp">
+
+</TextView>

@@ -10,8 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ListAdapter;
-import android.widget.ListView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SubjectsActivity extends AppCompatActivity{
-    private ListView mListView;
+    private GridView mGridView;
     private SearchView mSearching;
     private List<String> mSubjects = new ArrayList<String>();
 
@@ -48,11 +48,11 @@ public class SubjectsActivity extends AppCompatActivity{
         }
         catch(IOException e){}
 
-        mListView = (ListView) findViewById(R.id.listv);
-        ListAdapter subject_list = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mSubjects);
-        mListView.setAdapter(subject_list);
+        mGridView = (GridView) findViewById(R.id.listv);
+        ListAdapter subject_list = new ArrayAdapter<String>(this, R.layout.grid_item, mSubjects);
+        mGridView.setAdapter(subject_list);
 
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(SubjectsActivity.this, CoursesActivity.class);
