@@ -6,7 +6,7 @@
     android:contentDescription="ContentDescription"
     android:id="@+id/grid_item"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="wrap_content"
     android:backgroundTint="#add8e6"
     android:background="#FFFFFF"
     android:textSize = "20dp"
@@ -17,7 +17,6 @@
     android:shape="rectangle"
     android:radius="50dp"
     android:color="#0000ff"
-    android:height="30dp"
     android:autoLink="web">
 
 </TextView>
