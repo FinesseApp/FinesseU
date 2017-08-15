@@ -15,78 +15,28 @@
         android:text="Results Page!"
         android:background="#FFFFFF"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <Spinner
+        android:id="@+id/dropdowntype"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/text_book_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:autoLink="web"
-                    android:background="#FFFFFF"
-                    android:padding="20dp"
-                    android:text="Text Book" />
-
-                <ListView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/listtext"
-                    android:layout_gravity="center"
-                    android:layout_weight="2">
-                </ListView>
-                <TextView
-                    android:id="@+id/homework_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autoLink="web"
-                    android:background="#FFFFFF"
-                    android:padding="20dp"
-                    android:text="Homework" />
-                <ListView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/listhome"
-                    android:layout_gravity="center"
-                    android:layout_weight="2">
-                </ListView>
-
-                <TextView
-                    android:id="@+id/exams_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autoLink="web"
-                    android:background="#FFFFFF"
-                    android:padding="20dp"
-                    android:text="Exams" />
-                <ListView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/listexam"
-                    android:layout_gravity="center"
-                    android:layout_weight="2">
-                </ListView>
-
-            </LinearLayout>
-
-        </LinearLayout>
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        />
 
 
 
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listhome"
+        android:layout_gravity="center"
+        android:layout_weight="2">
+    </ListView>
 
-    </LinearLayout>
+
 </LinearLayout>
+
 
 
 

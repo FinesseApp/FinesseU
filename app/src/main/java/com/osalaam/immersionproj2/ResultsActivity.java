@@ -34,7 +34,7 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
-       final String mType = getIntent().getStringExtra("resource_type");
+        final String mType = getIntent().getStringExtra("resource_type");
 
         final String mClass  = getIntent().getStringExtra("class_title");
 
@@ -72,7 +72,7 @@ public class ResultsActivity extends AppCompatActivity {
                 {
                     mResults.add("No Results Found. Try Uploading A File Of Type: " + mType + "!");
                 }
-
+                DisplayResults();
               //  mTextBookTree.setText(mReslt);
 
             }
@@ -84,11 +84,15 @@ public class ResultsActivity extends AppCompatActivity {
             }
         });
 
-        ListAdapter result_list = new ArrayAdapter<String>(this, R.layout.resource_list_item, mResults);//places the content from the mCoursesII list into the listviews adapter
-        mListView.setAdapter(result_list);
+
 
     }
 
+    protected void DisplayResults()
+    {
+        ListAdapter result_list = new ArrayAdapter<String>(this, R.layout.resource_list_item, mResults);//places the content from the mCoursesII list into the listviews adapter
+        mListView.setAdapter(result_list);
+    }
     protected ArrayList<ResourceObj> searchResources(ArrayList<ResourceObj> resourceList, String query)
     {
         ArrayList<ResourceObj> result = new ArrayList<ResourceObj>();
