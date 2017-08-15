@@ -1,7 +1,12 @@
 package com.osalaam.immersionproj2;
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -17,6 +22,8 @@ import java.util.List;
 
 
 public class ResultsActivity extends AppCompatActivity {
+    private SearchView searchView;
+
     private ListView mListView;
     private List<String> mResults = new ArrayList<>();
 
@@ -39,6 +46,13 @@ public class ResultsActivity extends AppCompatActivity {
         final String mClass  = getIntent().getStringExtra("class_title");
 
         mListView = (ListView) findViewById(R.id.list);
+
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) findViewById(R.id.search);
+        searchView.setSubmitButtonEnabled(true);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
 
 
         DatabaseReference resourceRef = databaseReference.child(mType);
@@ -86,7 +100,36 @@ public class ResultsActivity extends AppCompatActivity {
 
 
 
+
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            Log.i("OOS", query);
+        }
+
+        //mSearching = (SearchView) findViewById(R.id.search2);
+
+        final SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener()
+        {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.i("TAG", query);
+                Intent intent = new Intent(getApplicationContext(), SearchableActivity.class);
+                intent.putExtra("query", query);
+                startActivity(intent);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                return true;
+
+            }
+        };
+        searchView.setOnQueryTextListener(queryTextListener);
     }
+
 
     protected void DisplayResults()
     {
