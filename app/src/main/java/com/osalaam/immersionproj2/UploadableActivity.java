@@ -1,14 +1,19 @@
 package com.osalaam.immersionproj2;
 
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,7 +32,9 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class UploadableActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -47,6 +54,12 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
     private Uri filePath;//the file path to the new storage object
     private StorageReference mStorageReference = FirebaseStorage.getInstance().getReference();
     private DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+
+
+    private File mPhotoFile;
+    private ImageView mPhotoView;
+    private static final int REQUEST_PHOTO = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +106,29 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // TODO Auto-generated method stub
+            }
+        });
+
+
+
+
+        final Button photoButton = (Button) findViewById(R.id.take_button);
+        photoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                File filesDir = getFilesDir();
+                mPhotoFile = new File(filesDir, "IMG_foo.jpg");
+
+                Uri uri = FileProvider.getUriForFile(UploadableActivity.this, "com.osalaam.immersionproj2.fileprovider", mPhotoFile);
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); // skipped checking with packagemanager and resolver
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+
+                List<ResolveInfo> cameraActivities = getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+                for (ResolveInfo activity : cameraActivities) {
+                    grantUriPermission(activity.activityInfo.packageName, uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                }
+
+                startActivityForResult(intent, REQUEST_PHOTO);
             }
         });
     }
@@ -173,6 +209,19 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
             }
 
         }
+
+
+
+        if (resultCode != Activity.RESULT_OK) {
+            return;
+        }
+
+        if (requestCode == REQUEST_PHOTO) {
+            Log.i("OA", mPhotoFile.toString());
+            Uri uri = FileProvider.getUriForFile(this, "com.osalaam.immersionproj2.fileprovider", mPhotoFile);
+            revokeUriPermission(uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            updatePhotoView();
+        }
     }
 
     @Override
@@ -185,6 +234,31 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
         } else if (view == mbuttonUpload){
             // This uploads the file
             uploadFile();
+        }
+    }
+
+
+
+
+
+    private void updatePhotoView() {
+        if (mPhotoFile == null || !mPhotoFile.exists()) {
+            mPhotoView.setImageDrawable(null);
+        } else {
+            // old way - uses up a lot of RAM!
+            /*Bitmap bm = BitmapFactory.decodeFile(mPhotoFile.getPath());
+            Log.i("DEI", bm.getByteCount()+" "+bm.getAllocationByteCount());
+            mPhotoView.setImageBitmap(bm);
+*/
+
+            // New way - get size of top-level view, use that as max height/width. Can also send any other values for desired height/width.
+            View rootView = findViewById(R.id.activity_main);
+            Log.i("OA", "display:"+rootView.getWidth()+" "+rootView.getHeight());
+
+            Bitmap bm = TakePicture.getScaledBitmap(mPhotoFile.getPath(), rootView.getWidth(), rootView.getHeight() );
+            Log.i("OA", bm.getByteCount()+" "+bm.getAllocationByteCount()+" "+bm.getWidth()+" "+bm.getHeight());
+            mPhotoView.setImageBitmap(bm);
+
         }
     }
 }

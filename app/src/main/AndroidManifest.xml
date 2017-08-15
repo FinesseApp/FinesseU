@@ -35,7 +35,17 @@
         <activity android:name=".ResultsActivity" />
         <activity android:name=".UploadableActivity" />
         <activity android:name=".loginActivity" />
-        <activity android:name=".FileActivity"></activity>
+        <activity android:name=".FileActivity">
+        </activity>
+        <provider
+            android:authorities="com.osalaam.immersionproj2.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/files"/>
+        </provider>
     </application>
 
 </manifest>
