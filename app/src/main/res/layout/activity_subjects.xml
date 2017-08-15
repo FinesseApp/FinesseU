@@ -1,20 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:orientation="vertical" android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:gravity="center"
-android:background="@drawable/bg_gradient"
-tools:context="com.osalaam.immersionproj2.SubjectsActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/bg_gradient"
+    tools:context="com.osalaam.immersionproj2.SubjectsActivity">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Finesse!"
-    android:textSize="70dp"
-    android:textColor="#FFFFFF"
-    android:layout_margin="50dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="154dp"
+        app:srcCompat="@drawable/howard"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="40dp"
+            android:layout_height="120dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="50dp"
+            app:srcCompat="@drawable/finesse" />
+
+        <TextView
+            android:layout_marginTop="50dp"
+            android:textSize="50dp"
+            android:textColor="#FFFFFF"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="INESSE" />
+    </LinearLayout>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:textSize="30dp"
+            android:textColor="#FFFFFF"/>
     <android.support.v7.widget.SearchView
         android:id="@+id/search"
         android:layout_width="match_parent"
@@ -24,6 +66,7 @@ tools:context="com.osalaam.immersionproj2.SubjectsActivity">
         android:elevation="4dp"
         android:background="#FFFFFF">
     </android.support.v7.widget.SearchView>
+    </LinearLayout>
 
     <GridView
         android:id="@+id/listv"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="16dp"
@@ -63,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="#FFFFFF"
+            style="@style/editText_style"
             android:id="@+id/getfiletitle"/>
 
 
@@ -79,6 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="#FFFFFF"
+            style="@style/editText_style"
             android:id="@+id/getteacher"/>
 
 
@@ -91,6 +93,7 @@
             android:textColor="#FFFFFF"
             />
         <EditText
+            style="@style/editText_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -98,14 +101,6 @@
             android:id="@+id/getcomment"/>
 
 
-
-
-
     </LinearLayout>
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/linearLayout"/>
 
 </RelativeLayout>
