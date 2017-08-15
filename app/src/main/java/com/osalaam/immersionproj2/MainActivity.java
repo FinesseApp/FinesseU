@@ -92,8 +92,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if(view == mloginButton){
             //login activity
-            startActivity(new Intent(this,loginActivity.class));
-            //startActivity(new Intent(this, SubjectsActivity.class));
+            //startActivity(new Intent(this,loginActivity.class));
+            startActivity(new Intent(this, SubjectsActivity.class));
 
         }
     }

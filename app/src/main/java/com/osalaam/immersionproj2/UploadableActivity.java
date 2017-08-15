@@ -2,15 +2,13 @@ package com.osalaam.immersionproj2;
 
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
-import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,15 +24,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
-import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class UploadableActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -53,7 +46,6 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
         private String mComment; // will be intent from resources activity
     */
     private Uri filePath;//the file path to the new storage object
-
     private StorageReference mStorageReference = FirebaseStorage.getInstance().getReference();
     private DatabaseReference mDatabaseReference = FirebaseDatabase.getInstance().getReference();
 
