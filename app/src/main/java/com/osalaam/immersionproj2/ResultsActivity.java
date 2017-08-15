@@ -58,6 +58,7 @@ public class ResultsActivity extends AppCompatActivity {
 
                 ArrayList<ResourceObj> ResultList = searchResources(mResourceObjList, mClass.toLowerCase());
 
+
                 for (int i = 0; i < ResultList.size(); i++)
                 {
                     results = "";
@@ -66,6 +67,10 @@ public class ResultsActivity extends AppCompatActivity {
                     results += " Title: " + ResultList.get(i).getTitle() + "\t" + " Teacher: " + ResultList.get(i).getAuthor() + "\t" + " Class: " + ResultList.get(i).getClassTitle() + "\t" + " URL: " + ResultList.get(i).getURL() +"\n";
                     results += "\n";
                     mResults.add(results);
+                }
+                if (ResultList.size() == 0)
+                {
+                    mResults.add("No Results Found. Try Uploading A File Of Type: " + mType + "!");
                 }
 
               //  mTextBookTree.setText(mReslt);
@@ -79,7 +84,7 @@ public class ResultsActivity extends AppCompatActivity {
             }
         });
 
-        ListAdapter result_list = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mResults);//places the content from the mCoursesII list into the listviews adapter
+        ListAdapter result_list = new ArrayAdapter<String>(this, R.layout.resource_list_item, mResults);//places the content from the mCoursesII list into the listviews adapter
         mListView.setAdapter(result_list);
 
     }
