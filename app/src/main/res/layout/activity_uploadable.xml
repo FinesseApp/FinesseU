@@ -99,8 +99,13 @@
             android:layout_margin="10dp"
             android:background="#FFFFFF"
             android:id="@+id/getcomment"/>
-
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/iview"
+    android:layout_gravity="center"/>
 
     </LinearLayout>
+
 
 </RelativeLayout>

@@ -33,7 +33,7 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
 
 
     private static final int PICK_IMAGE_REQUEST = 234;
-    private ImageView mimageView;
+   private ImageView mimageView;
     private Button mbuttonChoose, mbuttonUpload;
     private EditText mGetComment, mGetTeacher, mGetTitle;
 
@@ -66,7 +66,7 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
 
 
         //references to XML
-        mimageView = (ImageView) findViewById(R.id.imageView);
+        mimageView = (ImageView) findViewById(R.id.iview);
         mbuttonChoose = (Button) findViewById(R.id.buttonChoose);
         mbuttonUpload = (Button) findViewById(R.id.buttonUpload);
 
@@ -104,7 +104,7 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
 
     private void showFileChooser(){
         Intent intent = new Intent();
-        intent.setType("application/*");
+        intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select an image"), PICK_IMAGE_REQUEST);
     }
@@ -176,7 +176,7 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
             filePath = data.getData();
             try{
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                mimageView.setImageBitmap(bitmap);
+               mimageView.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
