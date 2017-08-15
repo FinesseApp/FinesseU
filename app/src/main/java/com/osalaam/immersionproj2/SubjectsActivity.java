@@ -73,20 +73,6 @@ public class SubjectsActivity extends AppCompatActivity{
             }
         }
 
-        /*Character curletter;
-        for (String item : mSubjects){
-            curletter = item.charAt(0);
-            if(mSubjectsMap.containsKey(curletter)){
-                mSubjectsMap.get(curletter).add(item);
-            }
-            else{
-                ArrayList<String> curitem = new ArrayList<>();
-                mLetters.add(item.charAt(0));
-                curitem.add(item);
-                mSubjectsMap.put(curletter, curitem);
-            }
-        }*/
-
         mFilterSubjects = mSubjects;
         mGridView = (GridView) findViewById(R.id.listv);
         ListAdapter subject_list = new ArrayAdapter<String>(this, R.layout.grid_item, mFilterSubjects);
@@ -123,7 +109,6 @@ public class SubjectsActivity extends AppCompatActivity{
             }
         });
 
-
         mSearching = (SearchView) findViewById(R.id.search);
 
         final SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener()
@@ -145,6 +130,5 @@ public class SubjectsActivity extends AppCompatActivity{
             }
         };
         mSearching.setOnQueryTextListener(queryTextListener);
-
     }
 }

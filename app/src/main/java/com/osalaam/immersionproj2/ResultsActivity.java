@@ -110,6 +110,3 @@ public class ResultsActivity extends AppCompatActivity {
         return result;
     }
 }
-
-
-

@@ -89,9 +89,3 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 }
-
-
-
-
-
-
