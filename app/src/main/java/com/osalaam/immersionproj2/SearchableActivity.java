@@ -1,10 +1,12 @@
 package com.osalaam.immersionproj2;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -19,16 +21,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class SearchableActivity extends AppCompatActivity {
+public class SearchableActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String query;
 
     private ListView mObjListView, mTextBookList, mExamsList;
     private List<String> mResultsAdaptee = new ArrayList<>();
 
-    private List<String> mResultsExams = new ArrayList<>();
-
-    private List<String> mResultsBooks = new ArrayList<>();
+    private Button mHWClick, mTBClick, mEXClick;
 
 
 
@@ -50,58 +50,73 @@ public class SearchableActivity extends AppCompatActivity {
 
         query = getIntent().getStringExtra("query");
 
-        TextView mText = (TextView) findViewById(R.id.resultsView);
-        mText.setText("Search Results For" + "\t\t" + "'" + query + "'");
+        //TextView mText = (TextView) findViewById(R.id.resultsView);
+      //  mText.setText("Search Results For" + "\t\t" + "'" + query + "'");
 
         //final TextView mHomeworkTree = (TextView) findViewById(R.id.homework_view);
 
 
         mObjListView = (ListView) findViewById(R.id.listhome);
+        mHWClick = (Button) findViewById(R.id.hwclick);
+        mTBClick = (Button) findViewById(R.id.tbclick);
+        mEXClick = (Button) findViewById(R.id.exclick);
+
+        mResourceObjBooks.clear();
+        mResourceObjExams.clear();
+        mResourceObjHW.clear();
+
+        DoSearch("Homework");
+
+        mHWClick.setOnClickListener(this);
+        mTBClick.setOnClickListener(this);
+        mEXClick.setOnClickListener(this);
 
 
 
-
-
-        //Specific Path Reference:
-
-
-
-//get the spinner from the xml.
-        final Spinner dropdown = (Spinner)findViewById(R.id.dropdowntype);
-//create a list of items for the spinner.
-        String[] items = new String[]{"Homework", "Text Books", "Exams"};
-//There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
-//set the spinners adapter to the previously created one.
-        dropdown.setAdapter(adapter);
-        //  dropdown.setPrompt("Select A File Type");
-
-        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id)
-            {
-                fileType = (String) parent.getItemAtPosition(position);
-
-                mResourceObjBooks.clear();
-                mResourceObjExams.clear();
-                mResourceObjHW.clear();
-
-                DoSearch(fileType);
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // TODO Auto-generated method stub
-            }
-        });
 
 
 
 
 
         //  DisplayResults();
+    }
+
+    @Override
+    public void onClick(View view)
+    {
+        if(view == mHWClick)
+        {
+
+            mResourceObjBooks.clear();
+            mResourceObjExams.clear();
+            mResourceObjHW.clear();
+
+            DoSearch("Homework");
+
+
+        }
+        else if(view == mTBClick)
+        {
+
+            mResourceObjBooks.clear();
+            mResourceObjExams.clear();
+            mResourceObjHW.clear();
+
+            DoSearch("Text Books");
+
+
+        }
+        else if(view == mEXClick)
+        {
+
+            mResourceObjBooks.clear();
+            mResourceObjExams.clear();
+            mResourceObjHW.clear();
+
+            DoSearch("Exams");
+
+
+        }
     }
 
     protected void DoSearch(String fileTypes)

@@ -8,14 +8,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/button_style"
+    android:backgroundTint="#D8D8D8"
     android:textSize = "20dp"
     android:gravity="center"
     style="@style/button_style"
     android:textColor="#FFFFFF"
-
     android:shape="rectangle"
     android:radius="50dp"
-    android:color="#0000ff"
     android:autoLink="web">
 
 </TextView>

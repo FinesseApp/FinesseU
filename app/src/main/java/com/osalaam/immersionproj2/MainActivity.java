@@ -73,9 +73,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (task.isSuccessful()) {
                     finish();
                     startActivity(new Intent(getApplicationContext(), SubjectsActivity.class));
-                }
-                else {
-                    Toast.makeText(getApplicationContext(),"Login Failed,Please Check Your Credentials", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Login Failed,Please Check Your Credentials", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -83,13 +82,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if (view == mloginButton) {
-            signupUser();
-        }
 
-        if (view == mtakeSignup) {
-            //startActivity(new Intent(this, SignupActivity.class));
+        if (view == mloginButton) {
+            //login activity
+            //startActivity(new Intent(this,loginActivity.class));
             startActivity(new Intent(this, SubjectsActivity.class));
+
+            if (view == mtakeSignup) {
+                //startActivity(new Intent(this, SignupActivity.class));
+                startActivity(new Intent(this, SubjectsActivity.class));
+            }
         }
     }
 }
