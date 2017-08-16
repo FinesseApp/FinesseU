@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@drawable/obama"
+    android:background="@mipmap/obama"
     tools:context="com.osalaam.immersionproj2.ResourcesActivity">
 
 
@@ -23,14 +23,14 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/tb"
+            android:background="@mipmap/tb"
             android:id="@+id/tbimage"
             />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Texrt Books"
+            android:text="Text Books"
             android:id="@+id/tbclick"
             android:textColor="#FFFFFF"
 
@@ -41,14 +41,14 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/hw"
+            android:background="@mipmap/hw"
             android:id="@+id/hwimage"
 
             />
 
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Homework"
             android:textColor="#FFFFFF"
@@ -62,11 +62,11 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/ex"
+        android:background="@mipmap/ex"
         android:id="@+id/eximage"
         />
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Exams"
         android:id="@+id/exclick"
