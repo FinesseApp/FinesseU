@@ -19,16 +19,16 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_marginLeft="50dp"
             app:srcCompat="@drawable/finesse" />
 
         <TextView
-            android:gravity="bottom"
-            android:textSize="50sp"
-            android:layout_weight="2"
+            android:layout_gravity="bottom"
+            android:textSize="40sp"
+            android:layout_weight="1"
             android:textColor="#FFFFFF"
             android:id="@+id/resourcesHeaderText"
             android:layout_width="wrap_content"
