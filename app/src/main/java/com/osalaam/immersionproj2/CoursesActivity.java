@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListAdapter;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,6 +25,7 @@ import java.util.List;
 public class CoursesActivity  extends AppCompatActivity {
     private GridView mGridView;
     private SearchView searchView;
+    private TextView headerText;
     private List<String> mCoursesCodes = new ArrayList<>();
     private List<String> mCourses = new ArrayList<>();
 
@@ -34,6 +36,13 @@ public class CoursesActivity  extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courses);
+
+
+        headerText = (TextView) findViewById(R.id.coursesHeaderText);
+
+
+        headerText.setText(getIntent().getStringExtra("subject_name"));
+
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchView = (SearchView) findViewById(R.id.search);

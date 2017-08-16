@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,6 +24,7 @@ import java.util.List;
 
 public class ResultsActivity extends AppCompatActivity {
     private SearchView searchView;
+
 
     private ListView mListView;
     private List<String> mResults = new ArrayList<>();
@@ -44,6 +46,7 @@ public class ResultsActivity extends AppCompatActivity {
         final String mType = getIntent().getStringExtra("resource_type");
 
         final String mClass  = getIntent().getStringExtra("class_title");
+
 
         mListView = (ListView) findViewById(R.id.list);
 

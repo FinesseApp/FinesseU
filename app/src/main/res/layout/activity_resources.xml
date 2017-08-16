@@ -30,10 +30,10 @@
             android:textSize="50sp"
             android:layout_weight="2"
             android:textColor="#FFFFFF"
-            android:id="@+id/textView"
+            android:id="@+id/resourcesHeaderText"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="INESSE" />
+            android:layout_height="wrap_content"
+             />
     </LinearLayout>
 
     <LinearLayout

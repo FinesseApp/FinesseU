@@ -9,6 +9,7 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class ResourcesActivity extends AppCompatActivity {
     private SearchView searchView;
@@ -18,6 +19,7 @@ public class ResourcesActivity extends AppCompatActivity {
     Button mTextBook;
     Button mExams;
 
+    private TextView headerText;
     String className = "";
 
     //The fuck move all of these to UploadAbleActivity...this should be able to display a list of resources
@@ -39,6 +41,9 @@ public class ResourcesActivity extends AppCompatActivity {
         mHomework = (Button) findViewById(R.id.homeworksource);
         mTextBook = (Button) findViewById(R.id.textbooksource);
         mExams = (Button) findViewById(R.id.examsource);
+
+        headerText = (TextView) findViewById(R.id.resourcesHeaderText);
+        headerText.setText(className);
 
         mUpload.setOnClickListener(new View.OnClickListener(){
             @Override
