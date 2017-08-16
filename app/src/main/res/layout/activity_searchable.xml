@@ -91,7 +91,8 @@
             android:layout_margin="10dp"
             android:shape="@drawable/box_shape"
             android:elevation="4dp"
-            android:background="@drawable/search_style">
+            android:background="@drawable/search_style"
+            >
         </android.support.v7.widget.SearchView>
 
         <ListView

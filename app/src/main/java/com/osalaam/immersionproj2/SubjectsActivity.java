@@ -103,7 +103,7 @@ public class SubjectsActivity extends AppCompatActivity{
                 for(int j = 0; j < mSubjects.size(); j++) {
                     if (mSubjects.get(j).equals(mFilterSubjects.get(i))) {
                         intent.putExtra("index", j);
-                        intent.putExtra("subject_name", mSubjects.get(i));
+                        intent.putExtra("subject_name", mFilterSubjects.get(i));
 
                         startActivity(intent);
                     }

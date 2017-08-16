@@ -73,9 +73,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="#FFFFFF"
             style="@style/editText_style"
-            android:id="@+id/getfiletitle"/>
+            android:id="@+id/getfiletitle"
+            android:background="@drawable/search_style"
+            android:textColor="#FFFFFF"
+
+            />
+
+
 
 
         <TextView
@@ -90,9 +95,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="#FFFFFF"
             style="@style/editText_style"
-            android:id="@+id/getteacher"/>
+            android:id="@+id/getteacher"
+            android:background="@drawable/search_style"
+            android:textColor="#FFFFFF"
+            />
 
 
         <TextView
@@ -108,8 +115,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="#FFFFFF"
-            android:id="@+id/getcomment"/>
+            android:id="@+id/getcomment"
+            android:background="@drawable/search_style"
+            android:textColor="#FFFFFF"
+
+            />
 <ImageView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

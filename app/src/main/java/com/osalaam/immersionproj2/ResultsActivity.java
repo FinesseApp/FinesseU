@@ -81,8 +81,7 @@ public class ResultsActivity extends AppCompatActivity {
                     results = "";
                 //    Log.i("TEST------------", "A");
 
-                    results += " Title: " + ResultList.get(i).getTitle() + "\t" + " Teacher: " + ResultList.get(i).getAuthor() + "\t" + " Class: " + ResultList.get(i).getClassTitle() + "\t" + " URL: " + ResultList.get(i).getURL() +"\n";
-                    results += "\n";
+                    results += " Title: " + ResultList.get(i).getTitle() + "\n" + " Teacher: " + ResultList.get(i).getAuthor() + "\n" + " Class: " + ResultList.get(i).getClassTitle() + "\n" + " URL: " + ResultList.get(i).getURL() +"\n";
                     mResults.add(results);
                 }
                 if (ResultList.size() == 0)

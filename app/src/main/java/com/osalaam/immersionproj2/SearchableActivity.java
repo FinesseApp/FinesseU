@@ -233,8 +233,7 @@ public class SearchableActivity extends AppCompatActivity implements View.OnClic
                 for (int i = 0; i < ResultList.size(); i++)
                 {
                     results = "";
-                    results += " Title: " + ResultList.get(i).getTitle() + "\t" + " Teacher: " + ResultList.get(i).getAuthor() + "\t" + " Class: " + ResultList.get(i).getClassTitle() + "\t" + " URL: " + ResultList.get(i).getURL() +"\n";
-                    results += "\n";
+                    results += " Title: " + ResultList.get(i).getTitle() + "\n" + " Teacher: " + ResultList.get(i).getAuthor() + "\n" + " Class: " + ResultList.get(i).getClassTitle() + "\n" + " URL: " + ResultList.get(i).getURL() +"\n";
                     mResultsAdaptee.add(results);
 
                 }
@@ -274,8 +273,7 @@ public class SearchableActivity extends AppCompatActivity implements View.OnClic
                 for (int i = 0; i < ResultList.size(); i++)
                 {
                     results = "";
-                    results += " Title: " + ResultList.get(i).getTitle() + "\t" + " Teacher: " + ResultList.get(i).getAuthor() + "\t" + " Class: " + ResultList.get(i).getClassTitle() + "\t" + " URL: " + ResultList.get(i).getURL() +"\n";
-                    results += "\n";
+                    results += " Title: " + ResultList.get(i).getTitle() + "\n" + " Teacher: " + ResultList.get(i).getAuthor() + "\n" + " Class: " + ResultList.get(i).getClassTitle() + "\n" + " URL: " + ResultList.get(i).getURL() +"\n";
                     mResultsAdaptee.add(results);
 
                 }
@@ -318,8 +316,7 @@ public class SearchableActivity extends AppCompatActivity implements View.OnClic
                 for (int i = 0; i < ResultList.size(); i++)
                 {
                     results = "";
-                    results += " Title: " + ResultList.get(i).getTitle() + "\t" + " Teacher: " + ResultList.get(i).getAuthor() + "\t" + " Class: " + ResultList.get(i).getClassTitle() + "\t" + " URL: " + ResultList.get(i).getURL() +"\n";
-                    results += "\n";
+                    results += " Title: " + ResultList.get(i).getTitle() + "\n" + " Teacher: " + ResultList.get(i).getAuthor() + "\n" + " Class: " + ResultList.get(i).getClassTitle() + "\n" + " URL: " + ResultList.get(i).getURL() +"\n";
                     mResultsAdaptee.add(results);
 
                 }
