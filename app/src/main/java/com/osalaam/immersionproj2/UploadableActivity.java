@@ -112,6 +112,7 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
 
 
 
+        mPhotoView = (ImageView)findViewById(R.id.iview);
 
         final Button photoButton = (Button) findViewById(R.id.take_button);
         photoButton.setOnClickListener(new View.OnClickListener() {
@@ -224,7 +225,7 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
         if (requestCode == REQUEST_PHOTO) {
             Log.i("OA", mPhotoFile.toString());
             Uri uri = FileProvider.getUriForFile(this, "com.osalaam.immersionproj2.fileprovider", mPhotoFile);
-
+            filePath = uri;
             revokeUriPermission(uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
             updatePhotoView();
         }
@@ -264,6 +265,7 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
             Bitmap bm = TakePicture.getScaledBitmap(mPhotoFile.getPath(), rootView.getWidth(), rootView.getHeight() );
             Log.i("OA", bm.getByteCount()+" "+bm.getAllocationByteCount()+" "+bm.getWidth()+" "+bm.getHeight());
             mPhotoView.setImageBitmap(bm);
+
 
         }
     }
