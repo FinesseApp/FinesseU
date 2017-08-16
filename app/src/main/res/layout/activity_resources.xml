@@ -5,56 +5,41 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
     android:background="@drawable/bg_gradient"
     tools:context="com.osalaam.immersionproj2.ResourcesActivity">
 
-    <RelativeLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="#800000FF"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="154dp"
-            app:srcCompat="@drawable/howard"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal"
-            android:weightSum="3">
+            android:id="@+id/imageView"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="50dp"
+            app:srcCompat="@drawable/finesse" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="40dp"
-                android:layout_height="120dp"
-                android:layout_weight="2"
-                android:layout_marginLeft="50dp"
-                app:srcCompat="@drawable/finesse" />
+        <TextView
+            android:gravity="bottom"
+            android:textSize="50sp"
+            android:layout_weight="2"
+            android:textColor="#FFFFFF"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="INESSE" />
+    </LinearLayout>
 
-            <TextView
-                android:layout_marginTop="50dp"
-                android:textSize="50dp"
-                android:textColor="#FFFFFF"
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="INESSE" />
-        </LinearLayout>
-    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Search"
-            android:textSize="30dp"
-            android:textColor="#FFFFFF"/>
-
         <android.support.v7.widget.SearchView
             android:id="@+id/search"
             android:layout_width="match_parent"
@@ -62,55 +47,62 @@
             android:layout_margin="10dp"
             android:shape="@drawable/box_shape"
             android:elevation="4dp"
-            android:background="#FFFFFF">
+            android:background="@drawable/search_style">
         </android.support.v7.widget.SearchView>
     </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Resources Page"
-        android:background="#FFFFFF"
-        />
 
-    <Button
-        android:id="@+id/uploading"
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="UPLOAD"
-        android:elevation="4dp"
-        android:background="#FFFFFF">
-    </Button>
+        android:layout_height="80dp"
+        android:layout_marginTop="290dp">
 
-    <Button
-        android:id="@+id/homeworksource"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Homework"
-        android:elevation="4dp"
-        android:background="#FFFFFF">
-    </Button>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:id="@+id/linearLayout1"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+            <Button
+                android:id="@+id/uploading"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/button_style"
+                android:text="UPLOAD"/>
 
-    <Button
-        android:id="@+id/textbooksource"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Text Books"
-        android:elevation="4dp"
-        android:background="#FFFFFF">
-    </Button>
+            <Button
+                android:id="@+id/homeworksource"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/button_style"
+                android:text="Homework"/>
 
-    <Button
-        android:id="@+id/examsource"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Exams"
-        android:elevation="4dp"
-        android:background="#FFFFFF">
-    </Button>
+            <Button
+                android:id="@+id/textbooksource"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/button_style"
+                android:text="Text Books"/>
+
+            <Button
+                android:id="@+id/examsource"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/button_style"
+                android:text="Exams"/>
+            </LinearLayout>
+    </HorizontalScrollView>
+
 
 
 

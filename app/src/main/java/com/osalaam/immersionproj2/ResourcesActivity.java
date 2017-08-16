@@ -34,6 +34,7 @@ public class ResourcesActivity extends AppCompatActivity {
         searchView.setSubmitButtonEnabled(true);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
+
         mUpload = (Button) findViewById(R.id.uploading);
         mHomework = (Button) findViewById(R.id.homeworksource);
         mTextBook = (Button) findViewById(R.id.textbooksource);
