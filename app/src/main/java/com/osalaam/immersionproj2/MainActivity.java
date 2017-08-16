@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button mloginButton;
-    private Button mtakeSignup;
+    private TextView mtakeSignup;
     private EditText memail;
     private EditText mpassword;
 
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         mloginButton = (Button) findViewById(R.id.loginbutton1);
-        mtakeSignup = (Button) findViewById(R.id.taketosignupbutton);
+        mtakeSignup = (TextView) findViewById(R.id.taketosignupbutton);
         memail = (EditText) findViewById(R.id.memailid);
         mpassword = (EditText) findViewById(R.id.mpasswd);
 
@@ -73,8 +74,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (task.isSuccessful()) {
                     finish();
                     startActivity(new Intent(getApplicationContext(), SubjectsActivity.class));
-                } else {
-                    Toast.makeText(getApplicationContext(), "Login Failed,Please Check Your Credentials", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(),"Login Failed,Please Check Your Credentials", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -82,16 +84,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
         if (view == mloginButton) {
-            //login activity
-            //startActivity(new Intent(this,loginActivity.class));
-            startActivity(new Intent(this, SubjectsActivity.class));
+            signupUser();
+        }
 
-            if (view == mtakeSignup) {
-                //startActivity(new Intent(this, SignupActivity.class));
-                startActivity(new Intent(this, SubjectsActivity.class));
-            }
+        if (view == mtakeSignup) {
+            startActivity(new Intent(this, SignupActivity.class));
         }
     }
 }

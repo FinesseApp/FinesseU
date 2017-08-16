@@ -10,10 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/bg_gradient"
+        android:background="@mipmap/finessebackground"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
-
         <LinearLayout
             android:layout_marginTop="30dp"
             android:layout_width="wrap_content"
@@ -40,42 +39,43 @@
 
         </LinearLayout>
 
+
         <LinearLayout
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
             android:orientation="vertical">
 
 
             <EditText
-                android:id="@+id/editText2"
                 style="@style/editText_style"
-                android:hint=" Enter email"
+                android:hint="Please enter the  Email"
+                android:id="@+id/editText2"
                 android:inputType="textEmailAddress" />
 
             <EditText
-                android:id="@+id/editText3"
                 style="@style/editText_style"
-                android:hint="Enter password"
+                android:id="@+id/editText3"
+                android:hint="Password"
                 android:inputType="textPassword" />
-
 
             <Button
                 android:id="@+id/signupbutton"
-                style="@style/button_style"
                 android:layout_gravity="center"
-                android:text="Sign up" />
+                android:padding="5dp"
+                android:layout_width="200dp"
+                android:layout_marginTop="100dp"
+                android:textColor="#FDFDFE"
+                android:layout_height="30dp"
+                android:textAllCaps="false"
+                android:background="@drawable/login_button_style"
+                android:text="Sign Up" />
 
 
         </LinearLayout>
 
-
-
-
     </LinearLayout>
 
-
-
-
 </RelativeLayout>
+
 

@@ -44,6 +44,7 @@
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:orientation="vertical">
 
 
@@ -62,17 +63,27 @@
             <Button
                 android:id="@+id/loginbutton1"
                 android:layout_gravity="center"
-                style="@style/button_style"
+                android:padding="5dp"
+                android:layout_width="300dp"
+                android:layout_marginTop="60dp"
+                android:textColor="#FDFDFE"
+                android:layout_height="30dp"
+                android:textAllCaps="false"
+                android:background="@drawable/login_button_style"
                 android:text="Login" />
 
-            <Button
+            <TextView
                 android:id="@+id/taketosignupbutton"
-                style="@style/button_style"
                 android:padding="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Don't have an account?Create one" />
+                android:layout_width="wrap_content"
+                android:layout_marginTop="70dp"
+                android:textColor="#FDFDFE"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="Don't have an account? Sign Up" />
+
+
 
 
         </LinearLayout>
