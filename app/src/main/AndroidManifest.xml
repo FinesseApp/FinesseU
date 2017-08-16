@@ -33,8 +33,8 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity android:name=".ResultsActivity" />
-        <activity android:name=".UploadableActivity" />
-        <activity android:name=".loginActivity" />
+        <activity android:name=".UploadableActivity" />i
+        <activity android:name=".SignupActivity" />
         <activity android:name=".FileActivity">
         </activity>
         <provider
