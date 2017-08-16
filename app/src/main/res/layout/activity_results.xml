@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.osalaam.immersionproj2.ResultsActivity"
-    android:background="@drawable/bg_gradient">
+    android:background="@mipmap/searchresults">
 
 
     <LinearLayout

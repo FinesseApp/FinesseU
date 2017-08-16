@@ -6,8 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@drawable/bg_gradient"
-    tools:context="com.osalaam.immersionproj2.SubjectsActivity">
+    android:background="@mipmap/subjectsbackground"
+    tools:context="com.osalaam.immersionproj2.SubjectsActivity"
+    tools:ignore="MissingPrefix">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,7 +34,8 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="INESSE" />
+            android:text="INESSE"
+            fontPath = "Chalkduster.ttf" />
     </LinearLayout>
 
 
@@ -59,11 +61,11 @@
 
     <GridView
         android:id="@+id/listv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="10dp"
         android:numColumns="2"
         android:padding="10dp"
-        android:horizontalSpacing = "10dp"
-        android:verticalSpacing = "10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:verticalSpacing="10dp" />
 
 </LinearLayout>

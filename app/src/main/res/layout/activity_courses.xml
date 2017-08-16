@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@drawable/bg_gradient"
+    android:background="@mipmap/subjectsbackground"
     tools:context="com.osalaam.immersionproj2.CoursesActivity">
 
 

@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if (view == mtakeSignup) {
-            startActivity(new Intent(this, SignupActivity.class));
-            //startActivity(new Intent(this, SubjectsActivity.class))
+            //startActivity(new Intent(this, SignupActivity.class));
+            startActivity(new Intent(this, SubjectsActivity.class));
         }
     }
 }
