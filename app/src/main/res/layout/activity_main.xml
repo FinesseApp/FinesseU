@@ -13,7 +13,6 @@
         android:background="@drawable/bg_gradient"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
-
         <LinearLayout
             android:layout_marginTop="30dp"
             android:layout_width="wrap_content"
@@ -40,40 +39,41 @@
 
         </LinearLayout>
 
+
         <LinearLayout
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
             android:orientation="vertical">
 
 
             <EditText
-                android:id="@+id/editText2"
                 style="@style/editText_style"
-                android:hint=" Enter email"
+                android:hint="Please enter the  Email"
+                android:id="@+id/memailid"
                 android:inputType="textEmailAddress" />
 
             <EditText
-                android:id="@+id/editText3"
                 style="@style/editText_style"
-                android:hint="Enter password"
+                android:id="@+id/mpasswd"
+                android:hint="Password"
                 android:inputType="textPassword" />
 
-
             <Button
-                android:id="@+id/signupbutton"
-                style="@style/button_style"
+                android:id="@+id/loginbutton1"
                 android:layout_gravity="center"
-                android:text="Sign up" />
+                style="@style/button_style"
+                android:text="Login" />
 
             <Button
-                android:id="@+id/loginbutton"
+                android:id="@+id/taketosignupbutton"
                 style="@style/button_style"
                 android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Already got the account,click here" />
+                android:text="Don't have an account?Create one" />
+
 
         </LinearLayout>
 
