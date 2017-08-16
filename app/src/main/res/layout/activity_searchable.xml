@@ -79,7 +79,7 @@
 
 </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -99,9 +99,11 @@
             android:layout_height="match_parent"
             android:id="@+id/listhome"
             android:layout_gravity="center"
-            android:layout_weight="2">
+            android:layout_weight="2"
+            android:layout_below="@+id/search"
+            android:layout_alignParentStart="true">
             </ListView>
-    </LinearLayout>
+    </RelativeLayout>
 
 
 
