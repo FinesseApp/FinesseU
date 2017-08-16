@@ -83,7 +83,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         if (view == mSignupButton) {
             loginpage();
         }
-//
+
     }
 }
 
