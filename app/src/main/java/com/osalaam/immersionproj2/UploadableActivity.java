@@ -224,6 +224,7 @@ public class UploadableActivity extends AppCompatActivity implements View.OnClic
         if (requestCode == REQUEST_PHOTO) {
             Log.i("OA", mPhotoFile.toString());
             Uri uri = FileProvider.getUriForFile(this, "com.osalaam.immersionproj2.fileprovider", mPhotoFile);
+
             revokeUriPermission(uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
             updatePhotoView();
         }
