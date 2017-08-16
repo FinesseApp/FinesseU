@@ -16,95 +16,94 @@
     android:orientation="vertical"
     android:layout_gravity="left"
     android:background="#99F74E4E"
+    android:gravity="center_vertical"
     >
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/tb"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="t"
-            android:id="@+id/tbclick"
+            android:background="@drawable/tb"
+            android:id="@+id/tbimage"
             />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Text Books"
-            android:background="#D8D8D8"/>
-        </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Texrt Books"
+            android:id="@+id/tbclick"
+            android:textColor="#FFFFFF"
+
+            />
+
+
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/hw"
+            android:id="@+id/hwimage"
+
             />
 
 
-        <Button
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="h"
+            android:text="Homework"
+            android:textColor="#FFFFFF"
+
             android:id="@+id/hwclick"
 
             />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Homework"
-            android:background="#D8D8D8"/>
 
 
-    </RelativeLayout>
-
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/ex"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="e"
-        android:id="@+id/exclick"
-
+        android:background="@drawable/ex"
+        android:id="@+id/eximage"
         />
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Exams"
-        android:background="#D8D8D8"/>
-</RelativeLayout>
+        android:id="@+id/exclick"
+        android:textColor="#FFFFFF"
+
+        />
+
 
 
 
 </LinearLayout>
 
-
-
-    <ListView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/listhome"
-        android:layout_gravity="center"
-        android:layout_weight="2">
-    </ListView>
+        android:orientation="vertical">
+
+        <android.support.v7.widget.SearchView
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:shape="@drawable/box_shape"
+            android:elevation="4dp"
+            android:background="@drawable/search_style">
+        </android.support.v7.widget.SearchView>
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/listhome"
+            android:layout_gravity="center"
+            android:layout_weight="2">
+            </ListView>
+    </LinearLayout>
+
+
 
 
 </LinearLayout>

@@ -1,12 +1,17 @@
 package com.osalaam.immersionproj2;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -23,12 +28,15 @@ import com.google.firebase.database.ValueEventListener;
 
 public class SearchableActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private SearchView searchView;
+
     private String query;
 
+    private ImageView EXImage, HWImage, TBImage;
     private ListView mObjListView, mTextBookList, mExamsList;
     private List<String> mResultsAdaptee = new ArrayList<>();
 
-    private Button mHWClick, mTBClick, mEXClick;
+    private TextView mHWClick, mTBClick, mEXClick;
 
 
 
@@ -55,11 +63,20 @@ public class SearchableActivity extends AppCompatActivity implements View.OnClic
 
         //final TextView mHomeworkTree = (TextView) findViewById(R.id.homework_view);
 
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) findViewById(R.id.search);
+        searchView.setSubmitButtonEnabled(true);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
 
         mObjListView = (ListView) findViewById(R.id.listhome);
-        mHWClick = (Button) findViewById(R.id.hwclick);
-        mTBClick = (Button) findViewById(R.id.tbclick);
-        mEXClick = (Button) findViewById(R.id.exclick);
+        mHWClick = (TextView) findViewById(R.id.hwclick);
+        mTBClick = (TextView) findViewById(R.id.tbclick);
+        mEXClick = (TextView) findViewById(R.id.exclick);
+
+        HWImage =(ImageView) findViewById(R.id.hwimage);
+        TBImage = (ImageView) findViewById(R.id.tbimage);
+        EXImage = (ImageView) findViewById(R.id.eximage);
 
         mResourceObjBooks.clear();
         mResourceObjExams.clear();
@@ -67,6 +84,10 @@ public class SearchableActivity extends AppCompatActivity implements View.OnClic
 
         DoSearch("Homework");
 
+
+        HWImage.setOnClickListener(this);
+        TBImage.setOnClickListener(this);
+        EXImage.setOnClickListener(this);
         mHWClick.setOnClickListener(this);
         mTBClick.setOnClickListener(this);
         mEXClick.setOnClickListener(this);
@@ -74,7 +95,33 @@ public class SearchableActivity extends AppCompatActivity implements View.OnClic
 
 
 
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            Log.i("OOS", query);
+        }
 
+        //mSearching = (SearchView) findViewById(R.id.search2);
+
+        final SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener()
+        {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                Log.i("TAG", query);
+                Intent intent = new Intent(getApplicationContext(), SearchableActivity.class);
+                intent.putExtra("query", query);
+                startActivity(intent);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                return true;
+
+            }
+        };
+        searchView.setOnQueryTextListener(queryTextListener);
 
 
 
@@ -84,7 +131,7 @@ public class SearchableActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view)
     {
-        if(view == mHWClick)
+        if(view == mHWClick || view == HWImage)
         {
 
             mResourceObjBooks.clear();
@@ -95,7 +142,7 @@ public class SearchableActivity extends AppCompatActivity implements View.OnClic
 
 
         }
-        else if(view == mTBClick)
+        else if(view == mTBClick || view == TBImage)
         {
 
             mResourceObjBooks.clear();
@@ -106,7 +153,7 @@ public class SearchableActivity extends AppCompatActivity implements View.OnClic
 
 
         }
-        else if(view == mEXClick)
+        else if(view == mEXClick || view == EXImage)
         {
 
             mResourceObjBooks.clear();
